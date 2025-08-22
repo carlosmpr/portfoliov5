@@ -1,0 +1,158 @@
+<style>
+    /* Basic styles from your global.css */
+    body {
+        font-family: 'Inter', sans-serif; /* A common, clean font similar to your original */
+    }
+    /* Styles for the typing cursor */
+    .typing-cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1em;
+        background-color: #111827; /* gray-900 */
+        animation: blink 0.7s infinite;
+        margin-left: 4px;
+        position: relative;
+        top: 0.1em;
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
+<!-- Navbar would go here -->
+<nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex-shrink-0">
+                <a href="/" class="text-xl font-semibold text-gray-900">Carlos Polanco</a>
+            </div>
+            <div class="hidden sm:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="/" class="text-gray-900 font-medium px-3 py-2 rounded-md text-sm">Home</a>
+                    <a href="#work" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Work</a>
+                    <a href="#about" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#contact" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<header class="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-6 tracking-tight leading-tight">
+            <!-- CHANGE: Added a span with an ID for the typing effect -->
+            <span id="typing-effect"></span>
+            <!-- This is the blinking cursor for the typing effect -->
+            <span class="typing-cursor"></span>
+        </h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto font-light leading-relaxed px-2">
+            <!-- CHANGE: More impactful subheading -->
+            Transforming complex problems into elegant, high-performance web applications and intelligent AI solutions.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+            <a href="/work" class="w-full sm:w-auto bg-gray-900 text-white px-6 sm:px-8 py-3 rounded-full hover:bg-gray-800 transition-transform hover:scale-105 duration-300 text-center font-medium shadow-lg">
+                View My Work
+            </a>
+            <a href="/contact" class="w-full sm:w-auto border border-gray-300 text-gray-900 px-6 sm:px-8 py-3 rounded-full hover:border-gray-900 hover:bg-gray-50 transition-all duration-300 text-center font-medium">
+                Get In Touch
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- The rest of your page content would follow -->
+<!-- ... (Featured Projects, About Me, etc.) ... -->
+
+<!-- Scroll to top button -->
+<button id="scroll-to-top" class="fixed bottom-8 right-8 bg-gray-900 text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 opacity-0 invisible" aria-label="Scroll to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+    </svg>
+</button>
+
+<script>
+    // --- NEW SCRIPT for Typing Effect ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const typingElement = document.getElementById('typing-effect');
+        const roles = ["Software Developer", "AI Consultant", "Full-Stack Engineer"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentRole = roles[roleIndex];
+            let displayText = '';
+
+            if (isDeleting) {
+                // Deleting text
+                displayText = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // Typing text
+                displayText = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            typingElement.innerHTML = displayText;
+
+            let typeSpeed = isDeleting ? 100 : 200;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                // Pause at the end of the word
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                // Move to the next word
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+            }
+            
+            setTimeout(type, typeSpeed);
+        }
+
+        type();
+    });
+
+    // --- Your existing scripts ---
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+    
+    if (scrollToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const href = this.getAttribute('href');
+            if (href) {
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+</script>

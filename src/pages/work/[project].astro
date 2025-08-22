@@ -1,0 +1,221 @@
+---
+// src/pages/work/[project].astro
+import "../../styles/global.css";
+import { getProjectSlugs, getProject } from "../../data/projects.js";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+
+export async function getStaticPaths() {
+  const slugs = getProjectSlugs();
+  return slugs.map(slug => ({
+    params: { project: slug }
+  }));
+}
+
+const { project } = Astro.params;
+const currentProject = getProject(project);
+
+if (!currentProject) {
+  throw new Error(`Project "${project}" not found`);
+}
+---
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={`${currentProject.title} - ${currentProject.description}`} />
+    <meta name="keywords" content={`${currentProject.tags.join(', ')}, portfolio, case study`} />
+    <meta property="og:title" content={`${currentProject.title} - Carlos Polanco`} />
+    <meta property="og:description" content={currentProject.description} />
+    <meta property="og:type" content="article" />
+    <title>{currentProject.title} - Carlos Polanco</title>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
+    <Navbar currentPage="work" />
+
+    <!-- Main Content -->
+    <main class="pt-20 sm:pt-24 pb-16 sm:pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                
+                <!-- Left Side - Sticky Media Showcase -->
+                <div class="lg:sticky lg:top-28 lg:h-fit order-2 lg:order-1">
+                    <div class="space-y-4 sm:space-y-6">
+                        
+                        <!-- Main Demo/Image -->
+                        <div class="bg-gray-50 rounded-2xl sm:rounded-3xl overflow-hidden">
+                            <div class={`aspect-video bg-gradient-to-br ${currentProject.gradient} flex items-center justify-center`}>
+                                <div class="text-center text-white">
+                                    <div class="w-16 h-16 sm:w-24 sm:h-24 bg-white/10 rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                                        <svg class="w-8 h-8 sm:w-12 sm:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1a3 3 0 000-6h-1m1 6V4a3 3 0 013-3m-3 15h8.5a2.5 2.5 0 000-5H16"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-white/80 text-sm sm:text-base">Live Demo Screenshot</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Media Gallery -->
+                        <div class="grid grid-cols-3 gap-3 sm:gap-4">
+                            <button class="bg-gray-100 rounded-xl aspect-video flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                <span class="text-gray-500 text-xs text-center">Desktop<br/>View</span>
+                            </button>
+                            <button class="bg-gray-100 rounded-xl aspect-video flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                <span class="text-gray-500 text-xs text-center">Mobile<br/>View</span>
+                            </button>
+                            <button class="bg-gray-100 rounded-xl aspect-video flex items-center justify-center hover:bg-gray-200 transition-colors">
+                                <span class="text-gray-500 text-xs text-center">Admin<br/>Panel</span>
+                            </button>
+                        </div>
+
+                        <!-- Video Demo -->
+                        <div class="bg-gray-50 rounded-2xl p-4 sm:p-6">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-8 h-8 sm:w-10 sm:h-10 bg-red-100 rounded-xl flex items-center justify-center">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-red-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-medium text-gray-900 text-sm sm:text-base">Video Walkthrough</h3>
+                                    <p class="text-xs sm:text-sm text-gray-600">3:45 minutes</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-200 rounded-xl aspect-video flex items-center justify-center">
+                                <button class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center shadow-sm hover:shadow-md transition-shadow">
+                                    <svg class="w-5 h-5 sm:w-6 sm:h-6 text-gray-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="flex gap-3">
+                            <a href={currentProject.demoUrl} class="flex-1 bg-gray-900 text-white px-4 sm:px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors text-center font-medium text-sm sm:text-base" target="_blank" rel="noopener noreferrer">
+                                View Live Site
+                            </a>
+                            <a href={currentProject.githubUrl} class="flex-1 border border-gray-300 text-gray-900 px-4 sm:px-6 py-3 rounded-xl hover:border-gray-400 transition-colors text-center font-medium text-sm sm:text-base" target="_blank" rel="noopener noreferrer">
+                                GitHub Repo
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Side - Scrollable Content -->
+                <div class="space-y-8 sm:space-y-12 order-1 lg:order-2">
+                    
+                    <!-- Project Header -->
+                    <header>
+                        <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                            {currentProject.status.map((status, index) => (
+                                <span class={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${
+                                    index === 0 ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'
+                                }`}>{status}</span>
+                            ))}
+                        </div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-4 sm:mb-6 tracking-tight leading-tight">
+                            {currentProject.title}
+                        </h1>
+                        <p class="text-lg sm:text-xl text-gray-600 leading-relaxed mb-6 sm:mb-8">
+                            {currentProject.fullDescription}
+                        </p>
+                        
+                        <!-- Tech Stack -->
+                        <div class="flex flex-wrap gap-2 sm:gap-3">
+                            {currentProject.tags.map((tag) => (
+                                <span class="px-3 sm:px-4 py-1 sm:py-2 bg-gray-100 text-gray-700 rounded-full text-xs sm:text-sm font-medium">{tag}</span>
+                            ))}
+                        </div>
+                    </header>
+
+                    <!-- Key Features -->
+                    <section aria-labelledby="features-heading">
+                        <h2 id="features-heading" class="text-xl sm:text-2xl font-medium text-gray-900 mb-4 sm:mb-6">Key Features</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                            {currentProject.features.map((feature) => (
+                                <div class="bg-gray-50 rounded-xl p-4 sm:p-6">
+                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-3 sm:mb-4">
+                                        <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        </svg>
+                                    </div>
+                                    <h3 class="font-medium text-gray-900 mb-2 text-sm sm:text-base">{feature.title}</h3>
+                                    <p class="text-gray-600 text-xs sm:text-sm leading-relaxed">{feature.description}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    <!-- Challenges & Solutions -->
+                    {currentProject.challenges && currentProject.challenges.length > 0 && (
+                        <section aria-labelledby="challenges-heading">
+                            <h2 id="challenges-heading" class="text-xl sm:text-2xl font-medium text-gray-900 mb-4 sm:mb-6">Challenges & Solutions</h2>
+                            <div class="space-y-4 sm:space-y-6">
+                                {currentProject.challenges.map((challenge, index) => (
+                                    <div class={`border-l-4 pl-4 sm:pl-6 ${
+                                        index % 3 === 0 ? 'border-blue-200' : 
+                                        index % 3 === 1 ? 'border-green-200' : 'border-purple-200'
+                                    }`}>
+                                        <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-2">Challenge: {challenge.title}</h3>
+                                        <p class="text-gray-700 leading-relaxed mb-3 text-sm sm:text-base">
+                                            {challenge.problem}
+                                        </p>
+                                        <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                                            <strong>Solution:</strong> {challenge.solution}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
+                    <!-- Results & Impact -->
+                    {currentProject.results && (
+                        <section aria-labelledby="results-heading">
+                            <h2 id="results-heading" class="text-xl sm:text-2xl font-medium text-gray-900 mb-4 sm:mb-6">Results & Impact</h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6">
+                                {currentProject.results.metrics.map((metric) => (
+                                    <div class="text-center p-4 sm:p-6 bg-gray-50 rounded-xl">
+                                        <div class="text-2xl sm:text-3xl font-light text-gray-900 mb-2">{metric.value}</div>
+                                        <div class="text-gray-600 text-sm sm:text-base">{metric.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+                            <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
+                                {currentProject.results.impact}
+                            </p>
+                        </section>
+                    )}
+
+                    <!-- Next Project -->
+                    {currentProject.nextProject && (
+                        <section class="border-t border-gray-100 pt-8 sm:pt-12" aria-labelledby="next-project-heading">
+                            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                                <div>
+                                    <h3 id="next-project-heading" class="text-base sm:text-lg font-medium text-gray-900 mb-2">Next Project</h3>
+                                    <p class="text-gray-600 text-sm sm:text-base">{getProject(currentProject.nextProject)?.title}</p>
+                                </div>
+                                <a href={`/work/${currentProject.nextProject}`} class="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors font-medium text-sm sm:text-base">
+                                    View Project
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </section>
+                    )}
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <Footer />
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Technologies from "../components/Technologies.astro";
+import Footer from "../components/Footer.astro";
+import Hero from "../components/Hero.astro";
+---
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Software Developer & AI Consultant specializing in React, Node.js, and AI integration" />
+    <meta name="keywords" content="software developer, AI consultant, React, Next.js, Node.js, full-stack developer" />
+    <meta name="author" content="Carlos Polanco" />
+    <meta property="og:title" content="Carlos Polanco - Software Developer & AI Consultant" />
+    <meta property="og:description" content="Software Developer & AI Consultant specializing in React, Node.js, and AI integration" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://carlospolanco.dev" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Carlos Polanco - Software Developer & AI Consultant" />
+    <meta name="twitter:description" content="Software Developer & AI Consultant specializing in React, Node.js, and AI integration" />
+    <title>Carlos Polanco - Software Developer & AI Consultant</title>
+</head>
+<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
+    <Navbar currentPage="home" />
+
+    <!-- Hero Section -->
+    <header class="pt-24 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light text-gray-900 mb-6 tracking-tight leading-tight">
+                <span class="block">Software Developer</span>
+                <span class="block text-gray-600">& AI Consultant</span>
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto font-light leading-relaxed px-2">
+                Specializing in React, Next.js, and AI integration. Building scalable web applications and teaching teams to adopt emerging technologies.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
+                <a href="/work" class="w-full sm:w-auto bg-gray-900 text-white px-6 sm:px-8 py-3 rounded-full hover:bg-gray-800 transition-colors text-center font-medium">
+                    View My Work
+                </a>
+                <a href="/contact" class="w-full sm:w-auto border border-gray-300 text-gray-900 px-6 sm:px-8 py-3 rounded-full hover:border-gray-400 transition-colors text-center font-medium">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </header>
+
+    
+    <!-- Featured Projects - Bento Style -->
+    <main>
+        <section class="py-16 sm:py-20 px-4 sm:px-6" aria-labelledby="featured-work-heading">
+            <div class="max-w-7xl mx-auto">
+                <h2 id="featured-work-heading" class="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-12 sm:mb-16 text-center">
+                    Selected Work
+                </h2>
+            
+                <!-- Bento Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 h-auto">
+                    <!-- Large Featured Project -->
+                    <article class="md:col-span-8 bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-white group cursor-pointer hover:scale-[1.02] transition-transform duration-300" onclick="window.location.href='/work/chatgpt-development-kit'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/chatgpt-development-kit'">
+                        <div class="flex flex-col justify-between h-full min-h-[300px] sm:min-h-[400px]">
+                            <div>
+                                <h3 class="text-xl sm:text-2xl md:text-3xl font-light mb-3 sm:mb-4 leading-tight">ChatGPT Development Kit</h3>
+                                <p class="text-slate-300 text-base sm:text-lg mb-4 sm:mb-6 max-w-lg leading-relaxed">Open-source GitHub repository providing developers with practical ChatGPT integrations, custom prompts, and API workflows for common business use cases</p>
+                                <div class="flex flex-wrap gap-2 mb-6 sm:mb-8">
+                                    <span class="px-2 sm:px-3 py-1 bg-white/10 text-white rounded-full text-xs sm:text-sm backdrop-blur">OpenAI API</span>
+                                    <span class="px-2 sm:px-3 py-1 bg-white/10 text-white rounded-full text-xs sm:text-sm backdrop-blur">JavaScript</span>
+                                    <span class="px-2 sm:px-3 py-1 bg-white/10 text-white rounded-full text-xs sm:text-sm backdrop-blur">Node.js</span>
+                                    <span class="px-2 sm:px-3 py-1 bg-white/10 text-white rounded-full text-xs sm:text-sm backdrop-blur">Open Source</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-slate-400 text-sm" aria-label="Project 01">01</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Medium Project -->
+                    <article class="md:col-span-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer hover:scale-[1.02] transition-transform duration-300" onclick="window.location.href='/work/ai-learning-platform'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/ai-learning-platform'">
+                        <div class="flex flex-col justify-between h-full min-h-[300px] sm:min-h-[400px]">
+                            <div>
+                                <h3 class="text-lg sm:text-xl md:text-2xl font-medium text-gray-900 mb-3 sm:mb-4 leading-tight">AI Learning Platform</h3>
+                                <p class="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Educational platform teaching AI concepts with hands-on tutorials and interactive examples for developers</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 sm:px-3 py-1 bg-white/70 text-gray-700 rounded-full text-xs sm:text-sm">Next.js</span>
+                                    <span class="px-2 sm:px-3 py-1 bg-white/70 text-gray-700 rounded-full text-xs sm:text-sm">PostgreSQL</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-400 text-sm" aria-label="Project 02">02</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Small Projects Row -->
+                    <article class="md:col-span-4 bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer hover:scale-[1.02] transition-transform duration-300" onclick="window.location.href='/work/whatsapp-ai-agents'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/whatsapp-ai-agents'">
+                        <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-medium text-gray-900 mb-2 sm:mb-3 leading-tight">WhatsApp AI Agents</h3>
+                                <p class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">AI service agents for restaurants & small businesses handling customer inquiries and appointment bookings</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 sm:px-3 py-1 bg-white/70 text-gray-700 rounded-full text-xs sm:text-sm">WhatsApp API</span>
+                                    <span class="px-2 sm:px-3 py-1 bg-white/70 text-gray-700 rounded-full text-xs sm:text-sm">Node.js</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-400 text-sm" aria-label="Project 03">03</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="md:col-span-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer hover:scale-[1.02] transition-transform duration-300" onclick="window.location.href='/work/multichat-panel-extension'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/multichat-panel-extension'">
+                        <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-medium text-gray-900 mb-2 sm:mb-3 leading-tight">MultiChat Panel Extension</h3>
+                                <p class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Chrome extension helping customer service teams manage multiple chat conversations more efficiently</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 sm:px-3 py-1 bg-white/70 text-gray-700 rounded-full text-xs sm:text-sm">Chrome API</span>
+                                    <span class="px-2 sm:px-3 py-1 bg-white/70 text-gray-700 rounded-full text-xs sm:text-sm">React</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-400 text-sm" aria-label="Project 04">04</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="md:col-span-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer hover:scale-[1.02] transition-transform duration-300" onclick="window.location.href='/work/loan-processing-automation'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/loan-processing-automation'">
+                        <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-medium text-gray-900 mb-2 sm:mb-3 leading-tight">Loan Processing Automation</h3>
+                                <p class="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Python workflow system streamlining loan application processing for financial institutions</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 sm:px-3 py-1 bg-white/70 text-gray-700 rounded-full text-xs sm:text-sm">Python</span>
+                                    <span class="px-2 sm:px-3 py-1 bg-white/70 text-gray-700 rounded-full text-xs sm:text-sm">REST APIs</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-gray-400 text-sm" aria-label="Project 05">05</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="text-center mt-12 sm:mt-16">
+                    <a href="/work" class="text-gray-700 hover:text-gray-900 transition-colors font-medium inline-flex items-center gap-2">
+                        View All Projects 
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section class="py-16 sm:py-20 px-4 sm:px-6 bg-gray-50" aria-labelledby="about-heading">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div class="order-2 lg:order-1">
+                        <h2 id="about-heading" class="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-6 sm:mb-8">
+                            About Me
+                        </h2>
+                        <div class="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed">
+                            <p class="text-base sm:text-lg text-gray-700 leading-relaxed">
+                                I'm Carlos Polanco, a full-stack developer with 5+ years of experience specializing in React, Next.js, Python, Node.js, and AWS. From sleek UIs to backend automation and cloud deployments.
+                            </p>
+                            <p class="text-sm sm:text-base">
+                                I've delivered real results for 15+ clients in finance, government, and hospitality—launching platforms that power thousands of users, streamline operations, and automate workflows.
+                            </p>
+                            <p class="text-sm sm:text-base">
+                                <strong>What sets me apart?</strong> I don't just code—I solve problems. I take business goals, turn them into technical plans, and build systems that work.
+                            </p>
+                            <p class="text-base sm:text-lg font-medium text-gray-900">
+                                Right now, I'm focused on integrating AI into business workflows and helping teams adopt emerging tech.
+                            </p>
+                            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
+                                <a href="/about" class="text-gray-900 hover:text-gray-600 transition-colors font-medium inline-flex items-center gap-2">
+                                    Learn More 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                                <a href="/resume.pdf" class="text-gray-900 hover:text-gray-600 transition-colors font-medium inline-flex items-center gap-2">
+                                    Explore My Resume 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div class="relative max-w-sm mx-auto lg:max-w-none">
+                            <div class="bg-gradient-to-br from-gray-300 to-gray-400 rounded-2xl sm:rounded-3xl aspect-[4/5] overflow-hidden flex items-center justify-center p-4 sm:p-6">
+                                <!-- YouTube Video Embed -->
+                                <div class="w-full h-3/4 bg-black rounded-xl sm:rounded-2xl overflow-hidden">
+                                    <iframe 
+                                        class="w-full h-full" 
+                                        src="https://www.youtube.com/embed/jrOrugFSW8s" 
+                                        title="Carlos Polanco Introduction" 
+                                        style="border: none;" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen
+                                        loading="lazy">
+                                    </iframe>
+                                </div>
+                            </div>
+                            <!-- Decorative element -->
+                            <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 w-16 h-16 sm:w-24 sm:h-24 bg-gray-900 rounded-xl sm:rounded-2xl -z-10"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <Technologies />
+
+        <!-- Call to Action -->
+        <section class="py-16 sm:py-20 px-4 sm:px-6" aria-labelledby="cta-heading">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 id="cta-heading" class="text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-4 sm:mb-6">
+                    Let's build something together
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-12 max-w-2xl mx-auto font-light px-4">
+                    I'm always interested in new opportunities and collaborations
+                </p>
+                <a href="/contact" class="inline-block bg-gray-900 text-white px-6 sm:px-8 py-3 rounded-full hover:bg-gray-800 transition-colors font-medium">
+                    Start a Conversation
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+
+    <!-- Scroll to top button -->
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-gray-900 text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 opacity-0 invisible" aria-label="Scroll to top">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        // Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scroll-to-top');
+        
+        if (scrollToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                    scrollToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                    scrollToTopBtn.classList.remove('opacity-100', 'visible');
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const href = this.getAttribute('href');
+                if (href) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

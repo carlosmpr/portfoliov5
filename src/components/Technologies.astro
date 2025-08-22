@@ -1,0 +1,59 @@
+---
+// src/components/Technologies.astro
+export interface Props {
+    title?: string;
+    centered?: boolean;
+}
+
+const { title = "Technologies I Work With", centered = true } = Astro.props;
+---
+
+<section class="py-16 sm:py-20 px-4 sm:px-6" aria-labelledby="technologies-heading">
+    <div class="max-w-4xl mx-auto">
+        <h2 id="technologies-heading" class={`text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-12 sm:mb-16 ${centered ? 'text-center' : ''}`}>
+            {title}
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+            <div class="text-center">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-sm">
+                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-blue-100 rounded flex items-center justify-center">
+                        <span class="text-blue-600 text-xs font-bold" aria-hidden="true">JS</span>
+                    </div>
+                </div>
+                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">Frontend</h3>
+                <p class="text-gray-600 text-sm sm:text-base">React, Next.js, TypeScript, JavaScript</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-sm">
+                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-green-100 rounded flex items-center justify-center">
+                        <span class="text-green-600 text-xs font-bold" aria-hidden="true">API</span>
+                    </div>
+                </div>
+                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">Backend</h3>
+                <p class="text-gray-600 text-sm sm:text-base">Node.js, Python, PostgreSQL, API Development</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-sm">
+                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-orange-100 rounded flex items-center justify-center">
+                        <span class="text-orange-600 text-xs font-bold" aria-hidden="true">AI</span>
+                    </div>
+                </div>
+                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">AI Integration</h3>
+                <p class="text-gray-600 text-sm sm:text-base">OpenAI API, Gemini API, ChatGPT Integration</p>
+            </div>
+            
+            <div class="text-center">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-sm">
+                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-purple-100 rounded flex items-center justify-center">
+                        <span class="text-purple-600 text-xs font-bold" aria-hidden="true">AWS</span>
+                    </div>
+                </div>
+                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">Cloud & DevOps</h3>
+                <p class="text-gray-600 text-sm sm:text-base">AWS, CI/CD, GitHub, Version Control</p>
+            </div>
+        </div>
+    </div>
+</section>
