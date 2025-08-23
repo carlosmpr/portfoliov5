@@ -1,59 +1,140 @@
 ---
 // src/components/Technologies.astro
-export interface Props {
-    title?: string;
-    centered?: boolean;
-}
-
-const { title = "Technologies I Work With", centered = true } = Astro.props;
 ---
 
-<section class="py-16 sm:py-20 px-4 sm:px-6" aria-labelledby="technologies-heading">
-    <div class="max-w-4xl mx-auto">
-        <h2 id="technologies-heading" class={`text-2xl sm:text-3xl md:text-4xl font-light text-gray-900 mb-12 sm:mb-16 ${centered ? 'text-center' : ''}`}>
-            {title}
-        </h2>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-            <div class="text-center">
-                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-sm">
-                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-blue-100 rounded flex items-center justify-center">
-                        <span class="text-blue-600 text-xs font-bold" aria-hidden="true">JS</span>
-                    </div>
+<style>
+    .animate-slide-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-slide-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .glass-card {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(38, 38, 38, 0.6);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .tech-icon {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+</style>
+
+<section class="pt-8 pb-16 sm:pb-20 px-4 sm:px-6 bg-neutral-950 text-white" aria-labelledby="technologies-heading">
+    <div class="max-w-7xl mx-auto">
+        <!-- Single Glass Card with All Content -->
+        <div class=" p-8 sm:p-12 animate-slide-up min-h-[600px] flex flex-col justify-center">
+            <!-- Header Section -->
+            <div class="text-center mb-12">
+                <div class="tech-icon flex items-center justify-center w-12 h-12 rounded-full mb-6 mx-auto">
+                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                    </svg>
                 </div>
-                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">Frontend</h3>
-                <p class="text-gray-600 text-sm sm:text-base">React, Next.js, TypeScript, JavaScript</p>
+                <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-4">
+                    Technical expertise
+                </div>
+                <h2 id="technologies-heading" class="text-2xl sm:text-3xl font-light text-white mb-4">
+                    Full-Stack Development Expertise
+                </h2>
+                <p class="text-white/70 leading-relaxed max-w-3xl mx-auto">
+                    Comprehensive technical skills spanning frontend, backend, cloud infrastructure, and AI integration to build scalable, modern applications.
+                </p>
             </div>
-            
-            <div class="text-center">
-                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-sm">
-                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-green-100 rounded flex items-center justify-center">
-                        <span class="text-green-600 text-xs font-bold" aria-hidden="true">API</span>
+
+            <!-- Technology Grid -->
+            <div class="flex-grow flex items-center justify-center">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+                    
+                    <!-- Frontend Development -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Frontend Development</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            React, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML5, CSS3, Responsive Design, SPA Development
+                        </p>
                     </div>
-                </div>
-                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">Backend</h3>
-                <p class="text-gray-600 text-sm sm:text-base">Node.js, Python, PostgreSQL, API Development</p>
-            </div>
-            
-            <div class="text-center">
-                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-sm">
-                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-orange-100 rounded flex items-center justify-center">
-                        <span class="text-orange-600 text-xs font-bold" aria-hidden="true">AI</span>
+
+                    <!-- Backend Development -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Backend Development</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            Python, Node.js, FastAPI, Express.js, REST APIs, GraphQL, Microservices Architecture, API Design
+                        </p>
                     </div>
-                </div>
-                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">AI Integration</h3>
-                <p class="text-gray-600 text-sm sm:text-base">OpenAI API, Gemini API, ChatGPT Integration</p>
-            </div>
-            
-            <div class="text-center">
-                <div class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 shadow-sm">
-                    <div class="w-6 h-6 sm:w-8 sm:h-8 bg-purple-100 rounded flex items-center justify-center">
-                        <span class="text-purple-600 text-xs font-bold" aria-hidden="true">AWS</span>
+
+                    <!-- Database & Storage -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Database & Storage</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            PostgreSQL, MongoDB, Redis, MySQL, Database Design, Query Optimization, Data Modeling
+                        </p>
                     </div>
+
+                    <!-- Cloud & DevOps -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Cloud & DevOps</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            AWS, Docker, CI/CD Pipelines, GitHub Actions, Vercel, Serverless Functions, Infrastructure as Code
+                        </p>
+                    </div>
+
+                    <!-- AI & Machine Learning -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">AI & Machine Learning</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            OpenAI API, ChatGPT Integration, Gemini API, Prompt Engineering, AI Workflow Automation, Vector Databases
+                        </p>
+                    </div>
+
+                    <!-- Mobile & Tools -->
+                    <div>
+                        <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Mobile & Development Tools</h3>
+                        <p class="text-white/70 text-sm leading-relaxed">
+                            React Native, Flutter, Git, VS Code, Postman, Figma, Chrome DevTools, Testing Frameworks
+                        </p>
+                    </div>
+
                 </div>
-                <h3 class="text-base sm:text-lg font-medium text-gray-900 mb-1 sm:mb-2">Cloud & DevOps</h3>
-                <p class="text-gray-600 text-sm sm:text-base">AWS, CI/CD, GitHub, Version Control</p>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    // Simple slide-up animation on scroll for Technologies
+    function initTechnologiesAnimations() {
+        const elements = document.querySelectorAll('.animate-slide-up');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Run animation only once
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
+    }
+
+    // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTechnologiesAnimations);
+    } else {
+        initTechnologiesAnimations();
+    }
+</script>

@@ -1,0 +1,362 @@
+---
+// src/components/AIAgents.astro
+---
+
+<style>
+    .animate-slide-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-slide-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Section background - always dark */
+    .ai-section {
+        background: #0a0a0a;
+        color: white;
+    }
+
+    .ai-section .text-gray-900 {
+        color: white;
+    }
+
+    .ai-section .text-gray-600 {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .ai-section .text-white\/70 {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .ai-section .text-white\/90 {
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .ai-section .text-white\/60 {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Feature cards */
+    .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(38, 38, 38, 0.6);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+        cursor: pointer;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Micro interactions for card elements */
+    .card-visual {
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .card-visual {
+        transform: scale(1.05);
+    }
+
+    .card-icon {
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .card-icon {
+        transform: rotate(5deg) scale(1.1);
+    }
+
+    .card-grid {
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .card-grid {
+        transform: scale(1.1);
+    }
+
+    .card-grid > div {
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .card-grid > div:nth-child(1) {
+        transform: translateY(-2px) rotate(2deg);
+    }
+
+    .feature-card:hover .card-grid > div:nth-child(2) {
+        transform: translateY(2px) rotate(-2deg);
+    }
+
+    .feature-card:hover .card-grid > div:nth-child(3) {
+        transform: translateY(2px) rotate(2deg);
+    }
+
+    .feature-card:hover .card-grid > div:nth-child(4) {
+        transform: translateY(-2px) rotate(-2deg);
+    }
+
+    .card-bars {
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .card-bars {
+        transform: scale(1.05);
+    }
+
+    .card-bars > div {
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .card-bars > div:nth-child(1) {
+        transform: scaleX(1.2);
+    }
+
+    .feature-card:hover .card-bars > div:nth-child(2) {
+        transform: scaleX(1.1);
+    }
+
+    .feature-card:hover .card-bars > div:nth-child(3) {
+        transform: scaleX(1.3);
+    }
+
+    .pill-badge {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .feature-button {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .feature-button:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .tag {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.6);
+    }
+</style>
+
+<!-- AI & AI Agents Section -->
+<section class="ai-section px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24" id="ai-section">
+    <div class="mx-auto max-w-7xl">
+        <!-- Pill label -->
+        <div class="animate-slide-up">
+            <div class="pill-badge mx-auto w-fit rounded-full px-3 py-1 text-xs tracking-wide uppercase font-medium">
+                AI Development
+            </div>
+        </div>
+        
+        <!-- Heading + subcopy -->
+        <div class="mt-6 text-center animate-slide-up">
+            <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 mb-4">
+                AI & AI Agents
+            </h2>
+            <p class="mx-auto mt-4 max-w-2xl text-gray-600 leading-relaxed">
+                Building intelligent AI agents and integrating cutting-edge AI capabilities into business workflows. From ChatGPT API implementations to custom AI automation solutions.
+            </p>
+        </div>
+
+        <!-- Grid -->
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-up">
+            
+            <!-- ChatGPT Integration -->
+            <div class="feature-card relative rounded-3xl p-6">
+                <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
+                    •
+                </button>
+                <div class="card-visual aspect-[4/3] grid place-items-center rounded-2xl bg-gradient-to-b from-green-500/20 to-green-600/10">
+                    <div class="card-icon size-24 rounded-full bg-green-500 flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 9 5.16-.74 9-4.45 9-10V7l-10-5z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-gray-900 font-medium">ChatGPT Integration</span>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="tag px-1.5 py-0.5 rounded">OpenAI</span>
+                        <span class="tag px-1.5 py-0.5 rounded">API</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Workflow Automation -->
+            <div class="feature-card relative rounded-3xl p-6">
+                <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
+                    •
+                </button>
+                <div class="card-visual aspect-[4/3] grid place-items-center rounded-2xl bg-gray-100">
+                    <div class="card-grid grid grid-cols-2 gap-3 p-3 rounded-2xl bg-white border border-gray-200">
+                        <div class="h-16 w-16 rounded-md bg-purple-500 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="h-16 w-16 rounded-md bg-blue-500 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                            </svg>
+                        </div>
+                        <div class="h-16 w-16 rounded-md bg-orange-500 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div class="h-16 w-16 rounded-md bg-red-500 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-gray-900 font-medium">Workflow Automation</span>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="tag px-1.5 py-0.5 rounded">Python</span>
+                        <span class="tag px-1.5 py-0.5 rounded">AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom AI Agents -->
+            <div class="feature-card relative rounded-3xl p-6">
+                <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
+                    •
+                </button>
+                <div class="card-visual aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <svg class="card-icon w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-gray-900 font-medium">Custom AI Agents</span>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="tag px-1.5 py-0.5 rounded">GPT-4</span>
+                        <span class="tag px-1.5 py-0.5 rounded">Custom</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WhatsApp AI Bots -->
+            <div class="feature-card relative rounded-3xl p-6">
+                <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
+                    •
+                </button>
+                <div class="card-visual aspect-[4/3] grid place-items-center rounded-2xl bg-gray-100">
+                    <div class="card-grid flex gap-3">
+                        <div class="size-10 rounded-md bg-green-500 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448L.057 24z"/>
+                            </svg>
+                        </div>
+                        <div class="size-10 rounded-md bg-blue-500 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div class="size-10 rounded-md bg-purple-500 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="size-10 rounded-md bg-orange-500 flex items-center justify-center">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-gray-900 font-medium">WhatsApp AI Bots</span>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="tag px-1.5 py-0.5 rounded">WhatsApp</span>
+                        <span class="tag px-1.5 py-0.5 rounded">Bot</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vector Databases -->
+            <div class="feature-card relative rounded-3xl p-6">
+                <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
+                    •
+                </button>
+                <div class="card-visual aspect-[4/3] grid place-items-center rounded-2xl bg-gray-100">
+                    <div class="card-icon h-20 w-20 rounded-2xl bg-indigo-600 flex items-center justify-center">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-gray-900 font-medium">Vector Databases</span>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="tag px-1.5 py-0.5 rounded">Pinecone</span>
+                        <span class="tag px-1.5 py-0.5 rounded">RAG</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prompt Engineering -->
+            <div class="feature-card relative rounded-3xl p-6">
+                <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
+                    •
+                </button>
+                <div class="card-visual aspect-[4/3] grid place-items-center rounded-2xl bg-gray-100">
+                    <div class="card-bars flex w-full max-w-sm flex-col gap-3 p-4">
+                        <div class="h-10 rounded-xl bg-gray-200 border border-gray-300"></div>
+                        <div class="h-10 rounded-xl bg-gray-200 border border-gray-300"></div>
+                        <div class="h-6 rounded-xl bg-gradient-to-r from-green-400 to-blue-500"></div>
+                    </div>
+                </div>
+                <div class="mt-4 flex items-center justify-between">
+                    <span class="text-gray-900 font-medium">Prompt Engineering</span>
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="tag px-1.5 py-0.5 rounded">Prompts</span>
+                        <span class="tag px-1.5 py-0.5 rounded">LLM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Simple slide-up animation functionality
+    function initAIAnimations() {
+        const elements = document.querySelectorAll('.animate-slide-up');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Run animation only once
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
+    }
+
+    // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAIAnimations);
+    } else {
+        initAIAnimations();
+    }
+</script>

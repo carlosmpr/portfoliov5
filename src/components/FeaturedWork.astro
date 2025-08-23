@@ -1,0 +1,209 @@
+---
+// src/components/FeaturedWork.astro
+---
+
+<style>
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-slide-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .animate-slide-up.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .glass-card {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(38, 38, 38, 0.6);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+        transform: translateY(-4px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 25px -5px rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Project card specific styles */
+    .project-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+    }
+
+    .project-tag {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.8);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .project-tag:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+</style>
+
+<!-- Featured Projects - Bento Style -->
+<section class="py-16 sm:py-20 px-4 sm:px-6 bg-neutral-950 text-white" aria-labelledby="featured-work-heading">
+    <div class="max-w-7xl mx-auto">
+        <!-- Section Title -->
+        <div class="text-center mb-12 sm:mb-16 animate-slide-up">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-6">
+                Portfolio showcase
+            </div>
+            <h2 id="featured-work-heading" class="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-4">
+                Selected Work
+            </h2>
+            <p class="text-white/70 max-w-2xl mx-auto">
+                A collection of projects that showcase my expertise in full-stack development and AI integration
+            </p>
+        </div>
+    
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 h-auto">
+            <!-- Large Featured Project -->
+            <article class="project-card glass-card md:col-span-8 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-white group cursor-pointer animate-slide-up" onclick="window.location.href='/work/chatgpt-development-kit'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/chatgpt-development-kit'">
+                <div class="flex flex-col justify-between h-full min-h-[300px] sm:min-h-[400px]">
+                    <div>
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-light mb-3 sm:mb-4 leading-tight text-white">ChatGPT Development Kit</h3>
+                        <p class="text-white/70 text-base sm:text-lg mb-4 sm:mb-6 max-w-lg leading-relaxed">Open-source GitHub repository providing developers with practical ChatGPT integrations, custom prompts, and API workflows for common business use cases</p>
+                        <div class="flex flex-wrap gap-2 mb-6 sm:mb-8">
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">OpenAI API</span>
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">JavaScript</span>
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">Node.js</span>
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">Open Source</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="project-number text-white/50 text-sm" aria-label="Project 01">01</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Medium Project -->
+            <article class="project-card glass-card md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/ai-learning-platform'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/ai-learning-platform'">
+                <div class="flex flex-col justify-between h-full min-h-[300px] sm:min-h-[400px]">
+                    <div>
+                        <h3 class="text-lg sm:text-xl md:text-2xl font-medium text-white mb-3 sm:mb-4 leading-tight">AI Learning Platform</h3>
+                        <p class="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">Educational platform teaching AI concepts with hands-on tutorials and interactive examples for developers</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">Next.js</span>
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">PostgreSQL</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="project-number text-white/50 text-sm" aria-label="Project 02">02</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Small Projects Row -->
+            <article class="project-card glass-card md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/whatsapp-ai-agents'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/whatsapp-ai-agents'">
+                <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 leading-tight">WhatsApp AI Agents</h3>
+                        <p class="text-white/70 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">AI service agents for restaurants & small businesses handling customer inquiries and appointment bookings</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">WhatsApp API</span>
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">Node.js</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="project-number text-white/50 text-sm" aria-label="Project 03">03</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card glass-card md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/multichat-panel-extension'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/multichat-panel-extension'">
+                <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 leading-tight">MultiChat Panel Extension</h3>
+                        <p class="text-white/70 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Chrome extension helping customer service teams manage multiple chat conversations more efficiently</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">Chrome API</span>
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">React</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="project-number text-white/50 text-sm" aria-label="Project 04">04</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card glass-card md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/loan-processing-automation'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/loan-processing-automation'">
+                <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
+                    <div>
+                        <h3 class="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 leading-tight">Loan Processing Automation</h3>
+                        <p class="text-white/70 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Python workflow system streamlining loan application processing for financial institutions</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">Python</span>
+                            <span class="project-tag px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">REST APIs</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <span class="project-number text-white/50 text-sm" aria-label="Project 05">05</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="text-center mt-12 sm:mt-16">
+            <a href="/work" class="project-tag text-white hover:text-blue-400 font-medium inline-flex items-center gap-2 animate-slide-up px-6 py-3 rounded-full">
+                View All Projects 
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Simple slide-up animation on scroll
+    function initScrollAnimations() {
+        const elements = document.querySelectorAll('.animate-slide-up');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Run animation only once
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        elements.forEach((element) => {
+            observer.observe(element);
+        });
+    }
+
+    // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    } else {
+        initScrollAnimations();
+    }
+</script>
