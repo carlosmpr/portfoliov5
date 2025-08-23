@@ -17,17 +17,20 @@ import Footer from "../components/Footer.astro";
     <meta property="og:type" content="website" />
     <title>About - Carlos Polanco</title>
 </head>
-<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
+<body class="bg-neutral-950 text-white font-sans antialiased overflow-x-hidden">
     <Navbar currentPage="about" />
 
     <!-- Hero Section -->
     <section class="pt-32 pb-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-light text-gray-900 mb-6 tracking-tight">
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-6">
+                Personal story
+            </div>
+            <h1 class="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight">
                 About Me
             </h1>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
-                Passionate developer crafting digital experiences that make a difference
+            <p class="text-xl text-white/70 max-w-2xl mx-auto font-light leading-relaxed">
+                From the Dominican Republic to New York - A journey through code, challenges, and innovation
             </p>
         </div>
     </section>
@@ -40,42 +43,65 @@ import Footer from "../components/Footer.astro";
                 <!-- Photo and Quick Info -->
                 <div class="lg:sticky lg:top-32">
                     <div class="relative mb-8">
-                        <div class="bg-gray-200 rounded-3xl aspect-[4/5] overflow-hidden">
+                        <div class="bg-white/10 border border-white/20 rounded-3xl aspect-[4/5] overflow-hidden backdrop-blur">
                             <!-- Placeholder for your image -->
-                            <div class="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                                <span class="text-gray-500 text-lg">Your Photo Here</span>
+                            <div class="w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-emerald-500 flex items-center justify-center">
+                                <span class="text-white text-lg font-medium">Carlos Polanco</span>
                             </div>
                         </div>
                         <!-- Decorative element -->
-                        <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-gray-900 rounded-2xl -z-10"></div>
+                        <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-white/10 border border-white/20 rounded-2xl -z-10 backdrop-blur"></div>
                     </div>
 
                     <!-- Quick Stats -->
                     <div class="space-y-6">
-                        <div class="bg-gray-50 rounded-2xl p-6">
-                            <h3 class="font-medium text-gray-900 mb-4">Quick Facts</h3>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+                            <h3 class="font-medium text-white mb-4">Quick Facts</h3>
                             <div class="space-y-3 text-sm">
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600">Location</span>
-                                    <span class="text-gray-900">New York, NY</span>
+                                    <span class="text-white/60">Location</span>
+                                    <span class="text-white">Queens, NY</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600">Experience</span>
-                                    <span class="text-gray-900">5+ Years</span>
+                                    <span class="text-white/60">Experience</span>
+                                    <span class="text-white">8+ Years</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600">Focus</span>
-                                    <span class="text-gray-900">Full-Stack Development</span>
+                                    <span class="text-white/60">Languages</span>
+                                    <span class="text-white">Spanish, English</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600">Education</span>
-                                    <span class="text-gray-900">Computer Science</span>
+                                    <span class="text-white/60">Education</span>
+                                    <span class="text-white">Telecommunications</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-white/60">Origin</span>
+                                    <span class="text-white">Dominican Republic</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+                            <h3 class="font-medium text-white mb-4">Contact</h3>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-white/60">Email:</span>
+                                    <a href="mailto:carlospolanco@the-aideveloper.com" class="text-blue-400 hover:text-blue-300">carlospolanco@the-aideveloper.com</a>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-white/60">LinkedIn:</span>
+                                    <a href="https://www.linkedin.com/in/carlosmpr" class="text-blue-400 hover:text-blue-300">carlosmpr</a>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span class="text-white/60">GitHub:</span>
+                                    <a href="https://github.com/carlosmpr" class="text-blue-400 hover:text-blue-300">carlosmpr</a>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Download Resume -->
-                        <a href="/resume.pdf" class="block w-full bg-gray-900 text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-colors text-center font-medium">
+                        <a href="/resume.pdf" class="block w-full bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl hover:bg-white/20 hover:border-white/30 transition-all text-center font-medium backdrop-blur">
                             Download Resume
                         </a>
                     </div>
@@ -86,117 +112,133 @@ import Footer from "../components/Footer.astro";
                     
                     <!-- My Story -->
                     <div>
-                        <h2 class="text-3xl font-light text-gray-900 mb-6">My Story</h2>
-                        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
+                        <h2 class="text-3xl font-light text-white mb-6">My Journey</h2>
+                        <div class="prose prose-lg max-w-none text-white/70 leading-relaxed space-y-6">
                             <p>
-                                My journey into technology began during college when I first discovered the magic of turning ideas into working software. What started as curiosity about how websites work evolved into a deep passion for creating digital experiences that solve real problems and delight users.
+                                <span class="text-white font-medium">From the Caribbean to the Big Apple.</span> I'm Carlos Polanco, originally from the Dominican Republic, where my tech journey began with a telecommunications degree. Back then, our studies weren't just theoretical - we dove deep into programming, chip design, network security, and system architecture. Most of our focus was on programming, which laid the foundation for everything that followed.
                             </p>
                             <p>
-                                Over the past five years, I've had the privilege of working with startups and established companies, building everything from e-commerce platforms to AI-powered applications. Each project has taught me something new and reinforced my belief that great software comes from understanding both the technical challenges and the human needs behind them.
+                                <span class="text-white font-medium">The Arduino Adventure.</span> My final university project was something I'm still proud of - a real-time bus tracking system that let users see exactly how far their bus was and estimate wait times. This was back in the 3G days, so we had to be incredibly resourceful. We programmed Arduino using C++, built the website in PHP, and had just 32KB to fit the entire project code. We even worked with minimal documentation about antennas and ATF connections. Those constraints taught me to write efficient, purposeful code.
                             </p>
                             <p>
-                                I'm particularly drawn to the intersection of design and functionality – creating applications that not only work flawlessly but feel intuitive and enjoyable to use. This philosophy drives every project I work on, whether it's a complex backend system or a sleek user interface.
+                                <span class="text-white font-medium">The Consulate Years: Learning Through Fire.</span> When I started at the Dominican Consulate in New York, it was like being thrown into the deep end. With a new consul coming in, the first two years were intense - 8:00 AM to 10:00 PM shifts until the head consul left. But this challenge became my greatest teacher. I worked closely with teams across different departments - customer service, documentation, administrative staff - learning from everyone while also serving at the front desk. This cross-functional collaboration taught me that the best solutions come from understanding every stakeholder's perspective, from the stressed customer waiting in line to the clerk processing hundreds of documents daily.
+                            </p>
+                            <p>
+                                <span class="text-white font-medium">The Pivot That Changed Everything.</span> At Celebrity Home Loan, I was initially hired for frontend work on a new project. But life had other plans - I ended up collaborating closely with the data and security teams, working hand-in-hand to manage databases and their AWS cloud infrastructure. This collaboration taught me invaluable lessons about cross-team communication and how frontend decisions impact backend performance. Working with security experts showed me how user-friendly interfaces could actually compromise or enhance security. Sometimes the best growth comes from embracing unexpected team dynamics.
+                            </p>
+                            <p>
+                                <span class="text-white font-medium">Today's Mission.</span> Now, as a freelance consultant, I help businesses integrate AI into their workflows through collaborative partnerships. I work closely with business owners, their teams, and end users to understand their real needs. I've guided over 15 clients through AI adoption by facilitating workshops with their staff, built chatbot systems with restaurant teams that increased customer retention by 15%, and collaborated with newsroom editors to create AI-powered platforms that reduced journalists' work time by 40%. Every project reinforces that the best technology solutions emerge from genuine collaboration between developers, business stakeholders, and the people who will actually use the system.
                             </p>
                         </div>
                     </div>
 
-                    <!-- What I Do -->
+                    <!-- Technical Skills -->
                     <div>
-                        <h2 class="text-3xl font-light text-gray-900 mb-6">What I Do</h2>
+                        <h2 class="text-3xl font-light text-white mb-6">Technical Expertise</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-blue-50 rounded-2xl p-6">
-                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 backdrop-blur">
+                                <div class="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center mb-4">
+                                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                                     </svg>
                                 </div>
-                                <h3 class="text-lg font-medium text-gray-900 mb-3">Frontend Development</h3>
-                                <p class="text-gray-700 text-sm leading-relaxed">
-                                    Creating responsive, interactive user interfaces with React, Vue.js, and modern CSS. I focus on performance, accessibility, and user experience.
+                                <h3 class="text-lg font-medium text-white mb-3">Frontend Development</h3>
+                                <p class="text-white/70 text-sm leading-relaxed">
+                                    React, Next.js, TypeScript, JavaScript. Creating responsive interfaces that work beautifully across all devices and browsers.
                                 </p>
                             </div>
 
-                            <div class="bg-green-50 rounded-2xl p-6">
-                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-green-500/10 border border-green-500/20 rounded-2xl p-6 backdrop-blur">
+                                <div class="w-12 h-12 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center justify-center mb-4">
+                                    <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
                                     </svg>
                                 </div>
-                                <h3 class="text-lg font-medium text-gray-900 mb-3">Backend Development</h3>
-                                <p class="text-gray-700 text-sm leading-relaxed">
-                                    Building scalable APIs and server-side applications with Node.js, Python, and modern databases. Security and performance are always top priorities.
+                                <h3 class="text-lg font-medium text-white mb-3">Backend & Cloud</h3>
+                                <p class="text-white/70 text-sm leading-relaxed">
+                                    Node.js, Python, FastAPI, PostgreSQL, AWS infrastructure. Building scalable systems that handle real-world traffic.
                                 </p>
                             </div>
 
-                            <div class="bg-purple-50 rounded-2xl p-6">
-                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-purple-500/10 border border-purple-500/20 rounded-2xl p-6 backdrop-blur">
+                                <div class="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
+                                    <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                                     </svg>
                                 </div>
-                                <h3 class="text-lg font-medium text-gray-900 mb-3">Product Strategy</h3>
-                                <p class="text-gray-700 text-sm leading-relaxed">
-                                    Collaborating with teams to translate business requirements into technical solutions. I enjoy the problem-solving aspect of product development.
+                                <h3 class="text-lg font-medium text-white mb-3">AI Integration</h3>
+                                <p class="text-white/70 text-sm leading-relaxed">
+                                    OpenAI API, ChatGPT integrations, prompt engineering, AI workflow automation. Making AI work for real business problems.
                                 </p>
                             </div>
 
-                            <div class="bg-orange-50 rounded-2xl p-6">
-                                <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4">
-                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div class="bg-orange-500/10 border border-orange-500/20 rounded-2xl p-6 backdrop-blur">
+                                <div class="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
+                                    <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
                                     </svg>
                                 </div>
-                                <h3 class="text-lg font-medium text-gray-900 mb-3">Innovation</h3>
-                                <p class="text-gray-700 text-sm leading-relaxed">
-                                    Exploring emerging technologies like AI/ML and experimenting with new tools to stay at the forefront of web development.
+                                <h3 class="text-lg font-medium text-white mb-3">Problem Solving</h3>
+                                <p class="text-white/70 text-sm leading-relaxed">
+                                    From 32KB Arduino constraints to enterprise-scale systems. I love turning complex challenges into elegant solutions.
                                 </p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Values & Approach -->
+                    <!-- Certifications & Achievements -->
                     <div>
-                        <h2 class="text-3xl font-light text-gray-900 mb-6">My Approach</h2>
+                        <h2 class="text-3xl font-light text-white mb-6">Certifications & Achievements</h2>
                         <div class="space-y-6">
-                            <div class="border-l-4 border-blue-200 pl-6">
-                                <h3 class="text-lg font-medium text-gray-900 mb-2">User-Centered Design</h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    Every technical decision I make starts with the user experience. I believe the best technology is invisible – it just works beautifully and intuitively.
+                            <div class="border-l-4 border-blue-400 pl-6 bg-white/5 py-4 rounded-r-xl">
+                                <h3 class="text-lg font-medium text-white mb-2">AWS Certified Developer - Associate</h3>
+                                <p class="text-white/70 leading-relaxed">
+                                    Amazon Web Services certification demonstrating expertise in developing and maintaining applications on AWS platform.
                                 </p>
+                                <span class="text-xs text-blue-400 font-semibold">Jul 2021</span>
                             </div>
                             
-                            <div class="border-l-4 border-green-200 pl-6">
-                                <h3 class="text-lg font-medium text-gray-900 mb-2">Clean, Maintainable Code</h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    I write code that's not just functional, but readable and maintainable. Good documentation and clear architecture save time and prevent headaches down the road.
+                            <div class="border-l-4 border-green-400 pl-6 bg-white/5 py-4 rounded-r-xl">
+                                <h3 class="text-lg font-medium text-white mb-2">AWS Solutions Architect - Associate</h3>
+                                <p class="text-white/70 leading-relaxed">
+                                    Specialized in designing distributed systems and architectures on AWS, focusing on best practices and cost optimization.
                                 </p>
+                                <span class="text-xs text-green-400 font-semibold">Jul 2021</span>
                             </div>
                             
-                            <div class="border-l-4 border-purple-200 pl-6">
-                                <h3 class="text-lg font-medium text-gray-900 mb-2">Continuous Learning</h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    Technology evolves rapidly, and I stay current through continuous learning, experimentation, and contributing to the developer community.
+                            <div class="border-l-4 border-purple-400 pl-6 bg-white/5 py-4 rounded-r-xl">
+                                <h3 class="text-lg font-medium text-white mb-2">LPIC-1: Linux System Administrator</h3>
+                                <p class="text-white/70 leading-relaxed">
+                                    Linux Professional Institute certification covering system administration, command line, and open source technologies.
                                 </p>
+                                <span class="text-xs text-purple-400 font-semibold">Oct 2020</span>
                             </div>
                             
-                            <div class="border-l-4 border-orange-200 pl-6">
-                                <h3 class="text-lg font-medium text-gray-900 mb-2">Collaborative Spirit</h3>
-                                <p class="text-gray-700 leading-relaxed">
-                                    The best products come from great teamwork. I value open communication, knowledge sharing, and building inclusive development environments.
+                            <div class="border-l-4 border-orange-400 pl-6 bg-white/5 py-4 rounded-r-xl">
+                                <h3 class="text-lg font-medium text-white mb-2">Real Impact: 15+ Clients Served</h3>
+                                <p class="text-white/70 leading-relaxed">
+                                    Successfully guided over 15 clients through AI adoption, delivering automated solutions that increased efficiency by up to 40% and customer retention by 15%.
                                 </p>
+                                <span class="text-xs text-orange-400 font-semibold">2024 - Present</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Beyond Code -->
+                    <!-- Philosophy & Values -->
                     <div>
-                        <h2 class="text-3xl font-light text-gray-900 mb-6">Beyond Code</h2>
-                        <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4">
+                        <h2 class="text-3xl font-light text-white mb-6">My Philosophy</h2>
+                        <div class="prose prose-lg max-w-none text-white/70 leading-relaxed space-y-4">
                             <p>
-                                When I'm not coding, you'll find me exploring New York's coffee shops with my laptop, working on open source projects, or mentoring aspiring developers. I believe in giving back to the community that has taught me so much.
+                                <span class="text-emerald-400 font-medium">"I don't just code—I solve problems and build dreams."</span> Good planning and documentation are the foundation of every successful project. Without proper planning, even the best code becomes maintenance nightmare.
                             </p>
                             <p>
-                                I'm also passionate about photography, which has taught me a lot about composition and visual storytelling – skills that translate surprisingly well to user interface design. On weekends, I enjoy hiking and getting away from screens to recharge and find inspiration in nature.
+                                <span class="text-white font-medium">AI is the future, and we must adapt.</span> The developers who learn to work with AI tools and integrate them effectively will lead the next wave of innovation. It's not about replacing human creativity—it's about amplifying it.
+                            </p>
+                            <p>
+                                <span class="text-white font-medium">Familiarity drives adoption.</span> Users adopt what feels natural. The simpler and more familiar your solution, the easier it is to use. Changing user habits is hard—enhancing their existing workflows is smart.
+                            </p>
+                            <p>
+                                <span class="text-white font-medium">Great software feels like home.</span> Whether it's a chatbot that talks like a person or a system that works like users expect, good technology should enhance what people already do naturally, not force them to learn entirely new ways of working.
                             </p>
                         </div>
                     </div>
@@ -207,28 +249,51 @@ import Footer from "../components/Footer.astro";
     </section>
 
     <!-- Experience Timeline -->
-    <section class="py-20 px-6 bg-gray-50">
+    <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-light text-gray-900 mb-16 text-center">Experience</h2>
+            <h2 class="text-3xl font-light text-white mb-16 text-center">Professional Journey</h2>
             
             <div class="space-y-8">
                 <!-- Timeline Item 1 -->
                 <div class="flex gap-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gray-900 rounded-2xl flex items-center justify-center">
+                        <div class="w-12 h-12 bg-blue-500 border border-blue-400 rounded-2xl flex items-center justify-center">
                             <span class="text-white text-sm font-medium">24</span>
                         </div>
                     </div>
                     <div class="flex-grow">
-                        <div class="bg-white rounded-2xl p-6">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                                <h3 class="text-lg font-medium text-gray-900">Senior Full-Stack Developer</h3>
-                                <span class="text-sm text-gray-600">2022 - Present</span>
+                                <h3 class="text-lg font-medium text-white">Freelance AI Consultant & App Developer</h3>
+                                <span class="text-sm text-white/60">Jun 2024 - Present</span>
                             </div>
-                            <p class="text-gray-600 mb-3">TechCorp Inc.</p>
-                            <p class="text-gray-700 leading-relaxed">
-                                Leading development of large-scale web applications, mentoring junior developers, and implementing best practices for code quality and performance optimization.
-                            </p>
+                            <p class="text-blue-400 mb-3 font-medium">Independent Consulting</p>
+                            <div class="text-white/70 leading-relaxed mb-4 space-y-2">
+                                <p class="mb-3">Making AI accessible for real businesses - one client at a time:</p>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-emerald-400 mt-1">•</span>
+                                        <span>Guided 15+ clients through their first AI implementations - from "what is ChatGPT?" to fully automated systems</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-blue-400 mt-1">•</span>
+                                        <span>Built a restaurant chatbot that actually talks like a person - customers started preferring it over phone calls (15% retention boost)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-purple-400 mt-1">•</span>
+                                        <span>Created an AI platform for journalists that transcribes interviews, extracts quotes, and suggests story angles - cut their prep time by 40%</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-yellow-400 mt-1">•</span>
+                                        <span>Ran workshops teaching business owners how AI can work for them (not against them)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">AI Integration</span>
+                                <span class="px-2 py-1 bg-green-500/20 text-green-300 rounded text-xs">ChatGPT API</span>
+                                <span class="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">Automation</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -236,20 +301,43 @@ import Footer from "../components/Footer.astro";
                 <!-- Timeline Item 2 -->
                 <div class="flex gap-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gray-200 rounded-2xl flex items-center justify-center">
-                            <span class="text-gray-600 text-sm font-medium">22</span>
+                        <div class="w-12 h-12 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center">
+                            <span class="text-white/70 text-sm font-medium">22</span>
                         </div>
                     </div>
                     <div class="flex-grow">
-                        <div class="bg-white rounded-2xl p-6">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                                <h3 class="text-lg font-medium text-gray-900">Full-Stack Developer</h3>
-                                <span class="text-sm text-gray-600">2020 - 2022</span>
+                                <h3 class="text-lg font-medium text-white">Software Developer II</h3>
+                                <span class="text-sm text-white/60">Feb 2022 - Mar 2024</span>
                             </div>
-                            <p class="text-gray-600 mb-3">StartupXYZ</p>
-                            <p class="text-gray-700 leading-relaxed">
-                                Built and maintained multiple web applications using React, Node.js, and PostgreSQL. Collaborated closely with design and product teams to deliver user-focused solutions.
-                            </p>
+                            <p class="text-emerald-400 mb-3 font-medium">Celebrity Home Loan</p>
+                            <div class="text-white/70 leading-relaxed mb-4 space-y-2">
+                                <p class="mb-3">The plot twist: hired for frontend, became the database guy:</p>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-emerald-400 mt-1">•</span>
+                                        <span>Dove deep into PostgreSQL optimization - turned 200+ daily loan applications from "loading forever" to "wow, that was fast" (25% speed boost)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-blue-400 mt-1">•</span>
+                                        <span>Became the unofficial AWS whisperer - reorganized their cloud setup and somehow saved the company 5% on monthly bills</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-purple-400 mt-1">•</span>
+                                        <span>Partnered with security team to clean up messy data - built protocols that kept client info safe and auditors happy</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-orange-400 mt-1">•</span>
+                                        <span>Learned that sometimes the best opportunities come disguised as "this wasn't in my job description"</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-emerald-500/20 text-emerald-300 rounded text-xs">PostgreSQL</span>
+                                <span class="px-2 py-1 bg-orange-500/20 text-orange-300 rounded text-xs">AWS</span>
+                                <span class="px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs">Data Security</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -257,20 +345,47 @@ import Footer from "../components/Footer.astro";
                 <!-- Timeline Item 3 -->
                 <div class="flex gap-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-gray-200 rounded-2xl flex items-center justify-center">
-                            <span class="text-gray-600 text-sm font-medium">19</span>
+                        <div class="w-12 h-12 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center">
+                            <span class="text-white/70 text-sm font-medium">16</span>
                         </div>
                     </div>
                     <div class="flex-grow">
-                        <div class="bg-white rounded-2xl p-6">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
-                                <h3 class="text-lg font-medium text-gray-900">Frontend Developer</h3>
-                                <span class="text-sm text-gray-600">2019 - 2020</span>
+                                <h3 class="text-lg font-medium text-white">Software Developer</h3>
+                                <span class="text-sm text-white/60">Oct 2016 - Jul 2021</span>
                             </div>
-                            <p class="text-gray-600 mb-3">Digital Agency Co.</p>
-                            <p class="text-gray-700 leading-relaxed">
-                                Developed responsive websites and web applications for various clients, focusing on modern JavaScript frameworks and cross-browser compatibility.
-                            </p>
+                            <p class="text-yellow-400 mb-3 font-medium">Consulate of the Dominican Republic in New York</p>
+                            <div class="text-white/70 leading-relaxed mb-4 space-y-2">
+                                <p class="mb-3">The boot camp years - learning to thrive under pressure:</p>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-yellow-400 mt-1">•</span>
+                                        <span>Survived 8AM-10PM shifts during new consul transition - coffee became my best friend</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-emerald-400 mt-1">•</span>
+                                        <span>Built a user registration system that turned chaos into order for 250 daily visitors (35% faster processing)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-blue-400 mt-1">•</span>
+                                        <span>Worked with every department - from customer service to documentation - learned that understanding everyone's pain points makes better solutions</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-purple-400 mt-1">•</span>
+                                        <span>Automated the mailing nightmare - no more lost documents or wrong addresses (80% reliability improvement)</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <span class="text-red-400 mt-1">•</span>
+                                        <span>Created call routing system with staff input - finally, people could reach the right department (45% fewer lost calls)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-1 bg-yellow-500/20 text-yellow-300 rounded text-xs">System Integration</span>
+                                <span class="px-2 py-1 bg-red-500/20 text-red-300 rounded text-xs">Process Automation</span>
+                                <span class="px-2 py-1 bg-indigo-500/20 text-indigo-300 rounded text-xs">Customer Service</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -281,19 +396,24 @@ import Footer from "../components/Footer.astro";
     <!-- Call to Action -->
     <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-                Let's create something amazing
-            </h2>
-            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto font-light">
-                I'm always interested in new opportunities and exciting projects
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="/contact" class="bg-gray-900 text-white px-8 py-3 rounded-full hover:bg-gray-800 transition-colors">
-                    Get In Touch
-                </a>
-                <a href="/work" class="border border-gray-300 text-gray-900 px-8 py-3 rounded-full hover:border-gray-400 transition-colors">
-                    View My Work
-                </a>
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-12 backdrop-blur">
+                <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-6">
+                    Let's connect
+                </div>
+                <h2 class="text-3xl md:text-4xl font-light text-white mb-6">
+                    Ready to build something incredible?
+                </h2>
+                <p class="text-xl text-white/70 mb-12 max-w-2xl mx-auto font-light">
+                    From Dominican Republic to New York, from 32KB constraints to enterprise systems - let's solve your next challenge together.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="/contact" class="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-full hover:bg-white/20 hover:border-white/30 transition-all backdrop-blur">
+                        Get In Touch
+                    </a>
+                    <a href="/work" class="border border-white/30 bg-white/5 text-white px-8 py-3 rounded-full hover:border-white/50 hover:bg-white/10 transition-all backdrop-blur">
+                        View My Work
+                    </a>
+                </div>
             </div>
         </div>
     </section>
