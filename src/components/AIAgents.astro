@@ -49,79 +49,85 @@
         cursor: pointer;
     }
 
-    .feature-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-    }
-
     /* Micro interactions for card elements */
     .card-visual {
         transition: all 0.3s ease;
-    }
-
-    .feature-card:hover .card-visual {
-        transform: scale(1.05);
     }
 
     .card-icon {
         transition: all 0.3s ease;
     }
 
-    .feature-card:hover .card-icon {
-        transform: rotate(5deg) scale(1.1);
-    }
-
     .card-grid {
         transition: all 0.3s ease;
-    }
-
-    .feature-card:hover .card-grid {
-        transform: scale(1.1);
     }
 
     .card-grid > div {
         transition: all 0.3s ease;
     }
 
-    .feature-card:hover .card-grid > div:nth-child(1) {
-        transform: translateY(-2px) rotate(2deg);
-    }
-
-    .feature-card:hover .card-grid > div:nth-child(2) {
-        transform: translateY(2px) rotate(-2deg);
-    }
-
-    .feature-card:hover .card-grid > div:nth-child(3) {
-        transform: translateY(2px) rotate(2deg);
-    }
-
-    .feature-card:hover .card-grid > div:nth-child(4) {
-        transform: translateY(-2px) rotate(-2deg);
-    }
-
     .card-bars {
         transition: all 0.3s ease;
-    }
-
-    .feature-card:hover .card-bars {
-        transform: scale(1.05);
     }
 
     .card-bars > div {
         transition: all 0.3s ease;
     }
 
-    .feature-card:hover .card-bars > div:nth-child(1) {
-        transform: scaleX(1.2);
-    }
+    @media (hover: hover) {
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
 
-    .feature-card:hover .card-bars > div:nth-child(2) {
-        transform: scaleX(1.1);
-    }
+        .feature-card:hover .card-visual {
+            transform: scale(1.05);
+        }
 
-    .feature-card:hover .card-bars > div:nth-child(3) {
-        transform: scaleX(1.3);
+        .feature-card:hover .card-icon {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .feature-card:hover .card-grid {
+            transform: scale(1.1);
+        }
+
+        .feature-card:hover .card-grid > div:nth-child(1) {
+            transform: translateY(-2px) rotate(2deg);
+        }
+
+        .feature-card:hover .card-grid > div:nth-child(2) {
+            transform: translateY(2px) rotate(-2deg);
+        }
+
+        .feature-card:hover .card-grid > div:nth-child(3) {
+            transform: translateY(2px) rotate(2deg);
+        }
+
+        .feature-card:hover .card-grid > div:nth-child(4) {
+            transform: translateY(-2px) rotate(-2deg);
+        }
+
+        .feature-card:hover .card-bars {
+            transform: scale(1.05);
+        }
+
+        .feature-card:hover .card-bars > div:nth-child(1) {
+            transform: scaleX(1.2);
+        }
+
+        .feature-card:hover .card-bars > div:nth-child(2) {
+            transform: scaleX(1.1);
+        }
+
+        .feature-card:hover .card-bars > div:nth-child(3) {
+            transform: scaleX(1.3);
+        }
+
+        .feature-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
     }
 
     .pill-badge {
@@ -136,29 +142,72 @@
         color: rgba(255, 255, 255, 0.7);
     }
 
-    .feature-button:hover {
-        background: rgba(255, 255, 255, 0.1);
-    }
 
     .tag {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
         color: rgba(255, 255, 255, 0.6);
     }
+
+    /* Mobile horizontal scroll for AI agents */
+    .mobile-scroll-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+    }
+
+    .mobile-scroll-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Edge */
+    }
+
+    .mobile-scroll-grid {
+        display: flex;
+        gap: 1.5rem;
+        min-width: max-content;
+    }
+
+    .mobile-scroll-item {
+        flex: 0 0 280px;
+        min-height: 320px;
+    }
+
+    @media (min-width: 768px) {
+        .mobile-scroll-container {
+            overflow: visible;
+        }
+        
+        .mobile-scroll-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    @media (min-width: 640px) {
+        .mobile-scroll-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .mobile-scroll-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
 </style>
 
 <!-- AI & AI Agents Section -->
-<section class="ai-section px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24" id="ai-section">
-    <div class="mx-auto max-w-7xl">
+<section class="ai-section px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24" id="ai-section">
+    <div class="mx-auto  max-w-7xl">
         <!-- Pill label -->
-        <div class="animate-slide-up">
-            <div class="pill-badge mx-auto w-fit rounded-full px-3 py-1 text-xs tracking-wide uppercase font-medium">
+        <div class="animate-slide-up ">
+            <div class="pill-badge sm:mx-auto w-fit rounded-full px-3 py-1 text-xs tracking-wide uppercase font-medium">
                 AI Development
             </div>
         </div>
         
         <!-- Heading + subcopy -->
-        <div class="mt-6 text-center animate-slide-up">
+        <div class="mt-6 sm:text-center animate-slide-up">
             <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 mb-4">
                 AI & AI Agents
             </h2>
@@ -167,11 +216,13 @@
             </p>
         </div>
 
-        <!-- Grid -->
-        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-slide-up">
-            
-            <!-- ChatGPT Integration -->
-            <div class="feature-card relative rounded-3xl p-6">
+        <!-- Mobile Horizontal Scroll / Desktop Grid -->
+        <div class="mt-10 animate-slide-up">
+            <div class="mobile-scroll-container md:overflow-visible">
+                <div class="mobile-scroll-grid gap-6">
+                    
+                    <!-- ChatGPT Integration -->
+                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -191,8 +242,8 @@
                 </div>
             </div>
 
-            <!-- AI Workflow Automation -->
-            <div class="feature-card relative rounded-3xl p-6">
+                    <!-- AI Workflow Automation -->
+                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -229,8 +280,8 @@
                 </div>
             </div>
 
-            <!-- Custom AI Agents -->
-            <div class="feature-card relative rounded-3xl p-6">
+                    <!-- Custom AI Agents -->
+                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -248,8 +299,8 @@
                 </div>
             </div>
 
-            <!-- WhatsApp AI Bots -->
-            <div class="feature-card relative rounded-3xl p-6">
+                    <!-- WhatsApp AI Bots -->
+                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -286,8 +337,8 @@
                 </div>
             </div>
 
-            <!-- Vector Databases -->
-            <div class="feature-card relative rounded-3xl p-6">
+                    <!-- Vector Databases -->
+                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -307,8 +358,8 @@
                 </div>
             </div>
 
-            <!-- Prompt Engineering -->
-            <div class="feature-card relative rounded-3xl p-6">
+                    <!-- Prompt Engineering -->
+                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -324,6 +375,8 @@
                     <div class="flex items-center gap-2 text-xs">
                         <span class="tag px-1.5 py-0.5 rounded">Prompts</span>
                         <span class="tag px-1.5 py-0.5 rounded">LLM</span>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,4 @@
----
-// src/components/FeaturedWork.astro
----
+
 
 <style>
     @keyframes slideUp {
@@ -34,19 +32,27 @@
         transition: all 0.3s ease;
     }
 
-    .glass-card:hover {
-        transform: translateY(-4px);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 25px -5px rgba(0, 0, 0, 0.3);
-        border-color: rgba(255, 255, 255, 0.2);
+    /* Desktop hover effects */
+    @media (hover: hover) {
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 12px 25px -5px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-tag:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
     }
 
     /* Project card specific styles */
     .project-card {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .project-card:hover {
-        transform: translateY(-8px);
     }
 
     .project-tag {
@@ -57,17 +63,19 @@
         backdrop-filter: blur(10px);
     }
 
-    .project-tag:hover {
-        background: rgba(255, 255, 255, 0.2);
-        border-color: rgba(255, 255, 255, 0.2);
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .hide-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
     }
 </style>
 
-<!-- Featured Projects - Bento Style -->
-<section class="py-16 sm:py-20 px-4 sm:px-6 bg-neutral-950 text-white" aria-labelledby="featured-work-heading">
+<section class="py-16 sm:py-20 bg-neutral-950 text-white" aria-labelledby="featured-work-heading">
     <div class="max-w-7xl mx-auto">
-        <!-- Section Title -->
-        <div class="text-center mb-12 sm:mb-16 animate-slide-up">
+        <div class="sm:text-center mb-12 sm:mb-16 animate-slide-up px-4 sm:px-6">
             <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-6">
                 Portfolio showcase
             </div>
@@ -78,11 +86,9 @@
                 A collection of projects that showcase my expertise in full-stack development and AI integration
             </p>
         </div>
-    
-        <!-- Bento Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 h-auto">
-            <!-- Large Featured Project -->
-            <article class="project-card glass-card md:col-span-8 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-white group cursor-pointer animate-slide-up" onclick="window.location.href='/work/chatgpt-development-kit'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/chatgpt-development-kit'">
+
+        <div class="relative py-2 flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-12 gap-4 sm:gap-6 h-auto hide-scrollbar scroll-pl-4 sm:scroll-pl-6 md:scroll-pl-0">
+            <article class="w-[85vw] sm:w-96 flex-shrink-0 snap-start ml-4 sm:ml-6 md:ml-0 project-card glass-card md:w-auto md:col-span-8 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-white group cursor-pointer animate-slide-up" onclick="window.location.href='/work/chatgpt-development-kit'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/chatgpt-development-kit'">
                 <div class="flex flex-col justify-between h-full min-h-[300px] sm:min-h-[400px]">
                     <div>
                         <h3 class="text-xl sm:text-2xl md:text-3xl font-light mb-3 sm:mb-4 leading-tight text-white">ChatGPT Development Kit</h3>
@@ -100,8 +106,7 @@
                 </div>
             </article>
 
-            <!-- Medium Project -->
-            <article class="project-card glass-card md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/ai-learning-platform'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/ai-learning-platform'">
+            <article class="w-[85vw] sm:w-80 flex-shrink-0 snap-start project-card glass-card md:w-auto md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/ai-learning-platform'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/ai-learning-platform'">
                 <div class="flex flex-col justify-between h-full min-h-[300px] sm:min-h-[400px]">
                     <div>
                         <h3 class="text-lg sm:text-xl md:text-2xl font-medium text-white mb-3 sm:mb-4 leading-tight">AI Learning Platform</h3>
@@ -117,8 +122,7 @@
                 </div>
             </article>
 
-            <!-- Small Projects Row -->
-            <article class="project-card glass-card md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/whatsapp-ai-agents'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/whatsapp-ai-agents'">
+            <article class="w-[85vw] sm:w-80 flex-shrink-0 snap-start project-card glass-card md:w-auto md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/whatsapp-ai-agents'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/whatsapp-ai-agents'">
                 <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
                     <div>
                         <h3 class="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 leading-tight">WhatsApp AI Agents</h3>
@@ -134,8 +138,8 @@
                 </div>
             </article>
 
-            <article class="project-card glass-card md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/multichat-panel-extension'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/multichat-panel-extension'">
-                <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
+            <article class="w-[85vw] sm:w-80 flex-shrink-0 snap-start project-card glass-card md:w-auto md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/multichat-panel-extension'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/multichat-panel-extension'">
+                 <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
                     <div>
                         <h3 class="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 leading-tight">MultiChat Panel Extension</h3>
                         <p class="text-white/70 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Chrome extension helping customer service teams manage multiple chat conversations more efficiently</p>
@@ -150,8 +154,8 @@
                 </div>
             </article>
 
-            <article class="project-card glass-card md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/loan-processing-automation'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/loan-processing-automation'">
-                <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
+            <article class="w-[85vw] sm:w-80 flex-shrink-0 snap-start mr-4 sm:mr-6 md:mr-0 project-card glass-card md:w-auto md:col-span-4 rounded-2xl sm:rounded-3xl p-6 sm:p-8 group cursor-pointer animate-slide-up" onclick="window.location.href='/work/loan-processing-automation'" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') window.location.href='/work/loan-processing-automation'">
+                 <div class="flex flex-col justify-between h-full min-h-[200px] sm:min-h-[250px]">
                     <div>
                         <h3 class="text-lg sm:text-xl font-medium text-white mb-2 sm:mb-3 leading-tight">Loan Processing Automation</h3>
                         <p class="text-white/70 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">Python workflow system streamlining loan application processing for financial institutions</p>
@@ -167,9 +171,9 @@
             </article>
         </div>
 
-        <div class="text-center mt-12 sm:mt-16">
+        <div class="text-center mt-12 sm:mt-16 px-4 sm:px-6">
             <a href="/work" class="project-tag text-white hover:text-blue-400 font-medium inline-flex items-center gap-2 animate-slide-up px-6 py-3 rounded-full">
-                View All Projects 
+                View All Projects
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
@@ -182,7 +186,7 @@
     // Simple slide-up animation on scroll
     function initScrollAnimations() {
         const elements = document.querySelectorAll('.animate-slide-up');
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
