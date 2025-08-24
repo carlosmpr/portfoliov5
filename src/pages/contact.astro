@@ -1,25 +1,14 @@
 ---
 // src/pages/contact.astro
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "../layout/Layout.astro";
 import Contact from "../components/Contact.astro";
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Get in touch with Carlos Polanco - Let's discuss your next project or collaboration opportunity" />
-    <meta name="keywords" content="contact, Carlos Polanco, hire developer, project inquiry, collaboration" />
-    <meta property="og:title" content="Contact - Carlos Polanco" />
-    <meta property="og:description" content="Get in touch with Carlos Polanco - Let's discuss your next project or collaboration opportunity" />
-    <meta property="og:type" content="website" />
-    <title>Contact - Carlos Polanco</title>
-</head>
-<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
-    <Navbar currentPage="contact" />
+<Layout 
+    title="Contact - Carlos Polanco" 
+    description="Get in touch with Carlos Polanco - Let's discuss your next project or collaboration opportunity"
+    currentPage="contact"
+>
 
     <!-- Hero Section -->
     <Contact />
@@ -112,6 +101,4 @@ import Contact from "../components/Contact.astro";
         </div>
     </section>
 
-    <Footer />
-</body>
-</html>
+</Layout>

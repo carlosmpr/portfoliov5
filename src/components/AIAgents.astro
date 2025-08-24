@@ -384,32 +384,3 @@
     </div>
 </section>
 
-<script>
-    // Simple slide-up animation functionality
-    function initAIAnimations() {
-        const elements = document.querySelectorAll('.animate-slide-up');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Run animation only once
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        elements.forEach((element) => {
-            observer.observe(element);
-        });
-    }
-
-    // Initialize when DOM is loaded
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAIAnimations);
-    } else {
-        initAIAnimations();
-    }
-</script>

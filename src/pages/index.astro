@@ -1,6 +1,5 @@
 ---
-import "../styles/global.css";
-import Navbar from "../components/Navbar.astro";
+import Layout from "../layout/Layout.astro";
 import Header from "../components/Header.astro";
 import FeaturedWork from "../components/FeaturedWork.astro";
 import AboutMe from "../components/AboutMe.astro";
@@ -8,146 +7,44 @@ import Technologies from "../components/Technologies.astro";
 import AIAgents from "../components/AIAgents.astro";
 import AITech from "../components/AITech.astro";
 import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
 ---
 
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Software Developer & AI Consultant specializing in React, Node.js, and AI integration" />
-    <meta name="keywords" content="software developer, AI consultant, React, Next.js, Node.js, full-stack developer" />
-    <meta name="author" content="Carlos Polanco" />
-    <meta property="og:title" content="Carlos Polanco - Software Developer & AI Consultant" />
-    <meta property="og:description" content="Software Developer & AI Consultant specializing in React, Node.js, and AI integration" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://carlospolanco.dev" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Carlos Polanco - Software Developer & AI Consultant" />
-    <meta name="twitter:description" content="Software Developer & AI Consultant specializing in React, Node.js, and AI integration" />
-    <title>Carlos Polanco - Software Developer & AI Consultant</title>
-</head>
-<body class="bg-white text-gray-900 font-sans antialiased overflow-x-hidden">
-    <Navbar currentPage="home" />
+<Layout 
+    title="Carlos Polanco - Software Developer & AI Consultant" 
+    description="Software Developer & AI Consultant specializing in React, Node.js, and AI integration."
+    currentPage="home"
+>
     <Header />
-    
     <main>
         <FeaturedWork />
         <AboutMe />
-
-        <!-- Skills Section -->
         <Technologies />
-        
-        <!-- AI & AI Agents Section -->
         <AIAgents />
-        
-        <!-- AI Tech Section -->
         <AITech />
-
-        
-        <!-- Contact Section -->
         <Contact />
     </main>
 
-    <Footer />
-
-    <!-- Scroll to top button -->
+    {/* The scroll-to-top button can stay here as it's specific to this page's length */}
     <button id="scroll-to-top" class="fixed bottom-8 right-8 bg-gray-900 text-white p-3 rounded-full shadow-lg hover:bg-gray-800 transition-all duration-300 opacity-0 invisible" aria-label="Scroll to top">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>
 
-    <style>
-        .animate-slide-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .animate-slide-up.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .glass-cta-card {
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .glass-cta-card:hover {
-            transform: translateY(-2px);
-        }
-    </style>
-
     <script>
-        // CTA Animation
-        function initCTAAnimation() {
-            const ctaElement = document.querySelector('.animate-slide-up');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-
-            if (ctaElement) {
-                observer.observe(ctaElement);
-            }
-        }
-
-        // Initialize CTA animation
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initCTAAnimation);
-        } else {
-            initCTAAnimation();
-        }
-
         // Scroll to top functionality
         const scrollToTopBtn = document.getElementById('scroll-to-top');
-        
         if (scrollToTopBtn) {
             window.addEventListener('scroll', () => {
                 if (window.pageYOffset > 300) {
                     scrollToTopBtn.classList.remove('opacity-0', 'invisible');
-                    scrollToTopBtn.classList.add('opacity-100', 'visible');
                 } else {
                     scrollToTopBtn.classList.add('opacity-0', 'invisible');
-                    scrollToTopBtn.classList.remove('opacity-100', 'visible');
                 }
             });
-            
             scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const href = this.getAttribute('href');
-                if (href) {
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
     </script>
-</body>
-</html>
+</Layout>
