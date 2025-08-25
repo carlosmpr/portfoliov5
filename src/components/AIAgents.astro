@@ -3,6 +3,62 @@
 ---
 
 <style>
+    /* GSAP Animation Initial States - Hidden by default */
+    .ai-pill,
+    .ai-header,
+    .ai-card {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Fallback CSS animations if GSAP fails */
+    .css-animations .ai-pill {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8);
+        transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .ai-pill.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .ai-header {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .ai-header.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .ai-card {
+        opacity: 0;
+        transform: translateY(50px) scale(0.7);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .ai-card.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    /* Staggered delays for CSS fallback */
+    .css-animations .delay-100 { transition-delay: 100ms; }
+    .css-animations .delay-200 { transition-delay: 200ms; }
+    .css-animations .delay-300 { transition-delay: 300ms; }
+    .css-animations .delay-400 { transition-delay: 400ms; }
+    .css-animations .delay-500 { transition-delay: 500ms; }
+    .css-animations .delay-600 { transition-delay: 600ms; }
+
     .animate-slide-up {
         opacity: 0;
         transform: translateY(30px);
@@ -200,14 +256,14 @@
 <section class="ai-section px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-24" id="ai-section">
     <div class="mx-auto  max-w-7xl">
         <!-- Pill label -->
-        <div class="animate-slide-up ">
+        <div class="ai-pill">
             <div class="pill-badge sm:mx-auto w-fit rounded-full px-3 py-1 text-xs tracking-wide uppercase font-medium">
                 AI Development
             </div>
         </div>
         
         <!-- Heading + subcopy -->
-        <div class="mt-6 sm:text-center animate-slide-up">
+        <div class="ai-header mt-6 sm:text-center">
             <h2 class="text-3xl sm:text-5xl font-light tracking-tight text-gray-900 mb-4">
                 AI & AI Agents
             </h2>
@@ -222,7 +278,7 @@
                 <div class="mobile-scroll-grid gap-6">
                     
                     <!-- ChatGPT Integration -->
-                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
+                    <div class="ai-card feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -243,7 +299,7 @@
             </div>
 
                     <!-- AI Workflow Automation -->
-                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
+                    <div class="ai-card feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -281,7 +337,7 @@
             </div>
 
                     <!-- Custom AI Agents -->
-                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
+                    <div class="ai-card feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -300,7 +356,7 @@
             </div>
 
                     <!-- WhatsApp AI Bots -->
-                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
+                    <div class="ai-card feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -338,7 +394,7 @@
             </div>
 
                     <!-- Vector Databases -->
-                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
+                    <div class="ai-card feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>
@@ -359,7 +415,7 @@
             </div>
 
                     <!-- Prompt Engineering -->
-                    <div class="feature-card mobile-scroll-item relative rounded-3xl p-6">
+                    <div class="ai-card feature-card mobile-scroll-item relative rounded-3xl p-6">
                 <button class="feature-button absolute right-3 top-3 size-8 grid place-items-center rounded-full">
                     •
                 </button>

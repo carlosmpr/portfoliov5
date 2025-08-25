@@ -3,6 +3,121 @@
 import Layout from "../layout/Layout.astro";
 ---
 
+<style>
+    /* GSAP Animation Initial States - Hidden by default */
+    .about-hero,
+    .about-sidebar,
+    .about-content,
+    .about-skill-card,
+    .about-cert,
+    .about-timeline-item,
+    .about-cta {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Fallback CSS animations if GSAP fails */
+    .css-animations .about-hero {
+        opacity: 0;
+        transform: translateY(50px) scale(0.95);
+        transition: opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .about-hero.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .about-sidebar {
+        opacity: 0;
+        transform: translateX(-80px) scale(0.95);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .about-sidebar.is-visible {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .about-content {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.7s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .about-content.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .css-animations .about-skill-card,
+    .css-animations .about-cert,
+    .css-animations .about-timeline-item {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .about-skill-card.is-visible,
+    .css-animations .about-cert.is-visible,
+    .css-animations .about-timeline-item.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .about-cta {
+        opacity: 0;
+        transform: translateY(60px) scale(0.95);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .about-cta.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    /* Staggered delays for CSS fallback */
+    .css-animations .delay-100 { transition-delay: 100ms; }
+    .css-animations .delay-200 { transition-delay: 200ms; }
+    .css-animations .delay-300 { transition-delay: 300ms; }
+    .css-animations .delay-400 { transition-delay: 400ms; }
+    .css-animations .delay-500 { transition-delay: 500ms; }
+    .css-animations .delay-600 { transition-delay: 600ms; }
+    .css-animations .delay-700 { transition-delay: 700ms; }
+    .css-animations .delay-800 { transition-delay: 800ms; }
+
+    /* Enhanced hover effects */
+    .skill-card-hover,
+    .timeline-hover,
+    .resume-button,
+    .cta-button {
+        transition: all 0.3s ease;
+    }
+
+    .skill-card-hover:hover {
+        transform: translateY(-12px) scale(1.03);
+    }
+
+    .timeline-hover:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    .resume-button:hover,
+    .cta-button:hover {
+        transform: translateY(-3px) scale(1.05);
+    }
+</style>
+
 <Layout 
     title="About - Carlos Polanco" 
     description="Learn more about Carlos Polanco - Full-stack developer passionate about creating meaningful digital experiences"
@@ -10,9 +125,9 @@ import Layout from "../layout/Layout.astro";
 >
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-6">
+    <section class="about-hero pt-32 pb-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-6">
+            <div class="hero-badge inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-6">
                 Personal story
             </div>
             <h1 class="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight">
@@ -30,8 +145,8 @@ import Layout from "../layout/Layout.astro";
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                 
                 <!-- Photo and Quick Info -->
-                <div class="lg:sticky lg:top-32">
-                    <div class="relative mb-8">
+                <div class="about-sidebar lg:sticky lg:top-32">
+                    <div class="profile-image relative mb-8">
                         <div class="bg-white/10 border border-white/20 rounded-3xl aspect-[4/5] overflow-hidden backdrop-blur">
                             <!-- Placeholder for your image -->
                             <div class="w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-emerald-500 flex items-center justify-center">
@@ -44,7 +159,7 @@ import Layout from "../layout/Layout.astro";
 
                     <!-- Quick Stats -->
                     <div class="space-y-6">
-                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+                        <div class="quick-facts bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
                             <h3 class="font-medium text-white mb-4">Quick Facts</h3>
                             <div class="space-y-3 text-sm">
                                 <div class="flex justify-between">
@@ -71,7 +186,7 @@ import Layout from "../layout/Layout.astro";
                         </div>
 
                         <!-- Contact Info -->
-                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+                        <div class="contact-card bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
                             <h3 class="font-medium text-white mb-4">Contact</h3>
                             <div class="space-y-3 text-sm">
                                 <div class="flex items-center gap-3">
@@ -90,7 +205,7 @@ import Layout from "../layout/Layout.astro";
                         </div>
 
                         <!-- Download Resume -->
-                        <a href="/resume.pdf" class="block w-full bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl hover:bg-white/20 hover:border-white/30 transition-all text-center font-medium backdrop-blur">
+                        <a href="/resume.pdf" class="resume-button block w-full bg-white/10 border border-white/20 text-white px-6 py-3 rounded-xl hover:bg-white/20 hover:border-white/30 transition-all text-center font-medium backdrop-blur">
                             Download Resume
                         </a>
                     </div>
@@ -100,9 +215,9 @@ import Layout from "../layout/Layout.astro";
                 <div class="space-y-12">
                     
                     <!-- My Story -->
-                    <div>
+                    <div class="about-content">
                         <h2 class="text-3xl font-light text-white mb-6">My Journey</h2>
-                        <div class="prose prose-lg max-w-none text-white/70 leading-relaxed space-y-6">
+                        <div class="section-content prose prose-lg max-w-none text-white/70 leading-relaxed space-y-6">
                             <p>
                                 <span class="text-white font-medium">From the Caribbean to the Big Apple.</span> I'm Carlos Polanco, originally from the Dominican Republic, where my tech journey began with a telecommunications degree. Back then, our studies weren't just theoretical - we dove deep into programming, chip design, network security, and system architecture. Most of our focus was on programming, which laid the foundation for everything that followed.
                             </p>
@@ -122,11 +237,11 @@ import Layout from "../layout/Layout.astro";
                     </div>
 
                     <!-- Technical Skills -->
-                    <div>
+                    <div class="about-content">
                         <h2 class="text-3xl font-light text-white mb-6">Technical Expertise</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 backdrop-blur">
-                                <div class="w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center mb-4">
+                        <div class="section-content grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="about-skill-card bg-blue-500/10 border border-blue-500/20 rounded-2xl p-6 backdrop-blur">
+                                <div class="skill-icon w-12 h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center mb-4">
                                     <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
                                     </svg>
@@ -137,8 +252,8 @@ import Layout from "../layout/Layout.astro";
                                 </p>
                             </div>
 
-                            <div class="bg-green-500/10 border border-green-500/20 rounded-2xl p-6 backdrop-blur">
-                                <div class="w-12 h-12 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center justify-center mb-4">
+                            <div class="about-skill-card bg-green-500/10 border border-green-500/20 rounded-2xl p-6 backdrop-blur">
+                                <div class="skill-icon w-12 h-12 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center justify-center mb-4">
                                     <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path>
                                     </svg>
@@ -149,8 +264,8 @@ import Layout from "../layout/Layout.astro";
                                 </p>
                             </div>
 
-                            <div class="bg-purple-500/10 border border-purple-500/20 rounded-2xl p-6 backdrop-blur">
-                                <div class="w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
+                            <div class="about-skill-card bg-purple-500/10 border border-purple-500/20 rounded-2xl p-6 backdrop-blur">
+                                <div class="skill-icon w-12 h-12 bg-purple-500/20 border border-purple-500/30 rounded-xl flex items-center justify-center mb-4">
                                     <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                                     </svg>
@@ -161,8 +276,8 @@ import Layout from "../layout/Layout.astro";
                                 </p>
                             </div>
 
-                            <div class="bg-orange-500/10 border border-orange-500/20 rounded-2xl p-6 backdrop-blur">
-                                <div class="w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
+                            <div class="about-skill-card bg-orange-500/10 border border-orange-500/20 rounded-2xl p-6 backdrop-blur">
+                                <div class="skill-icon w-12 h-12 bg-orange-500/20 border border-orange-500/30 rounded-xl flex items-center justify-center mb-4">
                                     <svg class="w-6 h-6 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
                                     </svg>
@@ -176,47 +291,47 @@ import Layout from "../layout/Layout.astro";
                     </div>
 
                     <!-- Certifications & Achievements -->
-                    <div>
+                    <div class="about-content">
                         <h2 class="text-3xl font-light text-white mb-6">Certifications & Achievements</h2>
-                        <div class="space-y-6">
-                            <div class="border-l-4 border-blue-400 pl-6 bg-white/5 py-4 rounded-r-xl">
+                        <div class="section-content space-y-6">
+                            <div class="about-cert cert-border border-l-4 border-blue-400 pl-6 bg-white/5 py-4 rounded-r-xl">
                                 <h3 class="text-lg font-medium text-white mb-2">AWS Certified Developer - Associate</h3>
                                 <p class="text-white/70 leading-relaxed">
                                     Amazon Web Services certification demonstrating expertise in developing and maintaining applications on AWS platform.
                                 </p>
-                                <span class="text-xs text-blue-400 font-semibold">Jul 2021</span>
+                                <span class="cert-date text-xs text-blue-400 font-semibold">Jul 2021</span>
                             </div>
                             
-                            <div class="border-l-4 border-green-400 pl-6 bg-white/5 py-4 rounded-r-xl">
+                            <div class="about-cert cert-border border-l-4 border-green-400 pl-6 bg-white/5 py-4 rounded-r-xl">
                                 <h3 class="text-lg font-medium text-white mb-2">AWS Solutions Architect - Associate</h3>
                                 <p class="text-white/70 leading-relaxed">
                                     Specialized in designing distributed systems and architectures on AWS, focusing on best practices and cost optimization.
                                 </p>
-                                <span class="text-xs text-green-400 font-semibold">Jul 2021</span>
+                                <span class="cert-date text-xs text-green-400 font-semibold">Jul 2021</span>
                             </div>
                             
-                            <div class="border-l-4 border-purple-400 pl-6 bg-white/5 py-4 rounded-r-xl">
+                            <div class="about-cert cert-border border-l-4 border-purple-400 pl-6 bg-white/5 py-4 rounded-r-xl">
                                 <h3 class="text-lg font-medium text-white mb-2">LPIC-1: Linux System Administrator</h3>
                                 <p class="text-white/70 leading-relaxed">
                                     Linux Professional Institute certification covering system administration, command line, and open source technologies.
                                 </p>
-                                <span class="text-xs text-purple-400 font-semibold">Oct 2020</span>
+                                <span class="cert-date text-xs text-purple-400 font-semibold">Oct 2020</span>
                             </div>
                             
-                            <div class="border-l-4 border-orange-400 pl-6 bg-white/5 py-4 rounded-r-xl">
+                            <div class="about-cert cert-border border-l-4 border-orange-400 pl-6 bg-white/5 py-4 rounded-r-xl">
                                 <h3 class="text-lg font-medium text-white mb-2">Real Impact: 15+ Clients Served</h3>
                                 <p class="text-white/70 leading-relaxed">
                                     Successfully guided over 15 clients through AI adoption, delivering automated solutions that increased efficiency by up to 40% and customer retention by 15%.
                                 </p>
-                                <span class="text-xs text-orange-400 font-semibold">2024 - Present</span>
+                                <span class="cert-date text-xs text-orange-400 font-semibold">2024 - Present</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Philosophy & Values -->
-                    <div>
+                    <div class="about-content">
                         <h2 class="text-3xl font-light text-white mb-6">My Philosophy</h2>
-                        <div class="prose prose-lg max-w-none text-white/70 leading-relaxed space-y-4">
+                        <div class="section-content prose prose-lg max-w-none text-white/70 leading-relaxed space-y-4">
                             <p>
                                 <span class="text-emerald-400 font-medium">"I don't just code—I solve problems and build dreams."</span> Good planning and documentation are the foundation of every successful project. Without proper planning, even the best code becomes maintenance nightmare.
                             </p>
@@ -244,14 +359,14 @@ import Layout from "../layout/Layout.astro";
             
             <div class="space-y-8">
                 <!-- Timeline Item 1 -->
-                <div class="flex gap-6">
+                <div class="about-timeline-item flex gap-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-blue-500 border border-blue-400 rounded-2xl flex items-center justify-center">
+                        <div class="timeline-dot w-12 h-12 bg-blue-500 border border-blue-400 rounded-2xl flex items-center justify-center">
                             <span class="text-white text-sm font-medium">24</span>
                         </div>
                     </div>
                     <div class="flex-grow">
-                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+                        <div class="timeline-card bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
                                 <h3 class="text-lg font-medium text-white">Freelance AI Consultant & App Developer</h3>
                                 <span class="text-sm text-white/60">Jun 2024 - Present</span>
@@ -260,19 +375,19 @@ import Layout from "../layout/Layout.astro";
                             <div class="text-white/70 leading-relaxed mb-4 space-y-2">
                                 <p class="mb-3">Making AI accessible for real businesses - one client at a time:</p>
                                 <ul class="space-y-2 text-sm">
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-emerald-400 mt-1">•</span>
                                         <span>Guided 15+ clients through their first AI implementations - from "what is ChatGPT?" to fully automated systems</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-blue-400 mt-1">•</span>
                                         <span>Built a restaurant chatbot that actually talks like a person - customers started preferring it over phone calls (15% retention boost)</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-purple-400 mt-1">•</span>
                                         <span>Created an AI platform for journalists that transcribes interviews, extracts quotes, and suggests story angles - cut their prep time by 40%</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-yellow-400 mt-1">•</span>
                                         <span>Ran workshops teaching business owners how AI can work for them (not against them)</span>
                                     </li>
@@ -288,14 +403,14 @@ import Layout from "../layout/Layout.astro";
                 </div>
 
                 <!-- Timeline Item 2 -->
-                <div class="flex gap-6">
+                <div class="about-timeline-item flex gap-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center">
+                        <div class="timeline-dot w-12 h-12 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center">
                             <span class="text-white/70 text-sm font-medium">22</span>
                         </div>
                     </div>
                     <div class="flex-grow">
-                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+                        <div class="timeline-card bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
                                 <h3 class="text-lg font-medium text-white">Software Developer II</h3>
                                 <span class="text-sm text-white/60">Feb 2022 - Mar 2024</span>
@@ -304,19 +419,19 @@ import Layout from "../layout/Layout.astro";
                             <div class="text-white/70 leading-relaxed mb-4 space-y-2">
                                 <p class="mb-3">The plot twist: hired for frontend, became the database guy:</p>
                                 <ul class="space-y-2 text-sm">
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-emerald-400 mt-1">•</span>
                                         <span>Dove deep into PostgreSQL optimization - turned 200+ daily loan applications from "loading forever" to "wow, that was fast" (25% speed boost)</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-blue-400 mt-1">•</span>
                                         <span>Became the unofficial AWS whisperer - reorganized their cloud setup and somehow saved the company 5% on monthly bills</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-purple-400 mt-1">•</span>
                                         <span>Partnered with security team to clean up messy data - built protocols that kept client info safe and auditors happy</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-orange-400 mt-1">•</span>
                                         <span>Learned that sometimes the best opportunities come disguised as "this wasn't in my job description"</span>
                                     </li>
@@ -332,14 +447,14 @@ import Layout from "../layout/Layout.astro";
                 </div>
 
                 <!-- Timeline Item 3 -->
-                <div class="flex gap-6">
+                <div class="about-timeline-item flex gap-6">
                     <div class="flex-shrink-0">
-                        <div class="w-12 h-12 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center">
+                        <div class="timeline-dot w-12 h-12 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center">
                             <span class="text-white/70 text-sm font-medium">16</span>
                         </div>
                     </div>
                     <div class="flex-grow">
-                        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
+                        <div class="timeline-card bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur">
                             <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
                                 <h3 class="text-lg font-medium text-white">Software Developer</h3>
                                 <span class="text-sm text-white/60">Oct 2016 - Jul 2021</span>
@@ -348,23 +463,23 @@ import Layout from "../layout/Layout.astro";
                             <div class="text-white/70 leading-relaxed mb-4 space-y-2">
                                 <p class="mb-3">The boot camp years - learning to thrive under pressure:</p>
                                 <ul class="space-y-2 text-sm">
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-yellow-400 mt-1">•</span>
                                         <span>Survived 8AM-10PM shifts during new consul transition - coffee became my best friend</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-emerald-400 mt-1">•</span>
                                         <span>Built a user registration system that turned chaos into order for 250 daily visitors (35% faster processing)</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-blue-400 mt-1">•</span>
                                         <span>Worked with every department - from customer service to documentation - learned that understanding everyone's pain points makes better solutions</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-purple-400 mt-1">•</span>
                                         <span>Automated the mailing nightmare - no more lost documents or wrong addresses (80% reliability improvement)</span>
                                     </li>
-                                    <li class="flex items-start gap-2">
+                                    <li class="achievement-item flex items-start gap-2">
                                         <span class="text-red-400 mt-1">•</span>
                                         <span>Created call routing system with staff input - finally, people could reach the right department (45% fewer lost calls)</span>
                                     </li>
@@ -385,8 +500,8 @@ import Layout from "../layout/Layout.astro";
     <!-- Call to Action -->
     <section class="py-20 px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-12 backdrop-blur">
-                <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-6">
+            <div class="about-cta bg-white/5 border border-white/10 rounded-2xl p-12 backdrop-blur">
+                <div class="cta-badge inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-6">
                     Let's connect
                 </div>
                 <h2 class="text-3xl md:text-4xl font-light text-white mb-6">
@@ -396,10 +511,10 @@ import Layout from "../layout/Layout.astro";
                     From Dominican Republic to New York, from 32KB constraints to enterprise systems - let's solve your next challenge together.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <a href="/contact" class="bg-white/10 border border-white/20 text-white px-8 py-3 rounded-full hover:bg-white/20 hover:border-white/30 transition-all backdrop-blur">
+                    <a href="/contact" class="cta-button bg-white/10 border border-white/20 text-white px-8 py-3 rounded-full hover:bg-white/20 hover:border-white/30 transition-all backdrop-blur">
                         Get In Touch
                     </a>
-                    <a href="/work" class="border border-white/30 bg-white/5 text-white px-8 py-3 rounded-full hover:border-white/50 hover:bg-white/10 transition-all backdrop-blur">
+                    <a href="/work" class="cta-button border border-white/30 bg-white/5 text-white px-8 py-3 rounded-full hover:border-white/50 hover:bg-white/10 transition-all backdrop-blur">
                         View My Work
                     </a>
                 </div>

@@ -3,6 +3,85 @@
 ---
 
 <style>
+    /* GSAP Animation Initial States - Hidden by default */
+    .ai-tech-header,
+    .ai-tech-section,
+    .ai-tech-card,
+    .ai-tech-chart,
+    .ai-tech-metric,
+    .ai-tech-globe,
+    .ai-tech-pipeline {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Fallback CSS animations if GSAP fails */
+    .css-animations .ai-tech-header {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+        transition: opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .ai-tech-header.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .ai-tech-section {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .ai-tech-section.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .ai-tech-card {
+        opacity: 0;
+        transform: translateY(50px) scale(0.85);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .ai-tech-card.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .ai-tech-chart,
+    .css-animations .ai-tech-metric,
+    .css-animations .ai-tech-globe,
+    .css-animations .ai-tech-pipeline {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .ai-tech-chart.is-visible,
+    .css-animations .ai-tech-metric.is-visible,
+    .css-animations .ai-tech-globe.is-visible,
+    .css-animations .ai-tech-pipeline.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    /* Staggered delays for CSS fallback */
+    .css-animations .delay-100 { transition-delay: 100ms; }
+    .css-animations .delay-200 { transition-delay: 200ms; }
+    .css-animations .delay-300 { transition-delay: 300ms; }
+    .css-animations .delay-400 { transition-delay: 400ms; }
+    .css-animations .delay-500 { transition-delay: 500ms; }
+    .css-animations .delay-600 { transition-delay: 600ms; }
+
     .animate-slide-up {
         opacity: 0;
         transform: translateY(30px);
@@ -119,7 +198,7 @@
 <section class="px-4 sm:px-6 lg:px-8 py-16 sm:py-20 bg-neutral-950 text-white" aria-labelledby="ai-tech-heading">
     <div class="mx-auto max-w-7xl space-y-6">
         <!-- Section Title -->
-        <div class="sm:text-center mb-12 animate-slide-up">
+        <div class="ai-tech-header sm:text-center mb-12">
             <h2 id="ai-tech-heading" class="text-3xl sm:text-5xl font-light tracking-tight text-white mb-4">
                 My AI Development Journey
             </h2>
@@ -129,17 +208,17 @@
         </div>
 
         <!-- Outer Frame -->
-        <section class="rounded-2xl border border-white/10 p-4 sm:p-6 animate-slide-up">
+        <section class="ai-tech-section rounded-2xl border border-white/10 p-4 sm:p-6">
             <!-- Row 1 -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
                 <!-- Left: Data Analytics Platform -->
                 <div class="md:col-span-8 space-y-4">
-                    <div class="glass-card p-5">
+                    <div class="ai-tech-card glass-card p-5">
                         <h3 class="title-sm">AI-Powered Analytics Dashboard</h3>
                         <p class="muted mt-1">Built custom analytics dashboards for financial clients, processing 50K+ transactions daily using Python, FastAPI, and machine learning models for fraud detection and user behavior analysis.</p>
                         
                         <!-- Chart -->
-                        <div class="mt-5 aspect-[16/9] w-full rounded-xl border border-white/10 bg-gradient-to-b from-neutral-900 to-neutral-950 relative overflow-hidden">
+                        <div class="ai-tech-chart mt-5 aspect-[16/9] w-full rounded-xl border border-white/10 bg-gradient-to-b from-neutral-900 to-neutral-950 relative overflow-hidden">
                             <!-- Bars -->
                             <div class="absolute inset-0 grid grid-cols-9 items-end gap-3 px-6 pb-6">
                                 <div class="chart-bar h-20 bg-white/20 rounded-sm"></div>
@@ -172,17 +251,17 @@
                     </div>
 
                     <div class="flex-1 grid grid-rows-3 gap-4">
-                        <div class="glass-card p-4 flex flex-col justify-center text-center">
+                        <div class="ai-tech-metric glass-card p-4 flex flex-col justify-center text-center">
                             <p class="text-sm text-white/60">AI Projects Delivered</p>
                             <p class="mt-1 text-4xl font-extrabold tracking-tight">15+</p>
                         </div>
 
-                        <div class="glass-card p-4 flex flex-col justify-center text-center">
+                        <div class="ai-tech-metric glass-card p-4 flex flex-col justify-center text-center">
                             <p class="text-sm text-white/60">Active AI Agents</p>
                             <p class="mt-1 text-3xl font-extrabold tracking-tight">8</p>
                         </div>
 
-                        <div class="glass-card p-4 flex flex-col justify-center text-center">
+                        <div class="ai-tech-metric glass-card p-4 flex flex-col justify-center text-center">
                             <p class="text-sm text-white/60">Years AI Experience</p>
                             <p class="mt-1 text-3xl font-extrabold tracking-tight">3+</p>
                         </div>
@@ -231,7 +310,7 @@
                     </div>
                     
                     <!-- Additional Stats Card -->
-                    <div class="glass-card p-4 grid grid-cols-2 gap-4 mt-4">
+                    <div class="ai-tech-metric glass-card p-4 grid grid-cols-2 gap-4 mt-4">
                         <div class="text-center">
                             <p class="text-xs text-white/60">Response Time</p>
                             <p class="mt-1 text-2xl font-extrabold tracking-tight text-emerald-400">&lt;2s</p>
@@ -245,7 +324,7 @@
 
                 <!-- Right: Globe Visualization -->
                 <div class="md:col-span-5 flex">
-                    <div class="glass-card p-6 flex items-center justify-center flex-1">
+                    <div class="ai-tech-globe glass-card p-6 flex items-center justify-center flex-1">
                         <div class="relative aspect-square w-full max-w-md rounded-full bg-[radial-gradient(circle_at_50%_40%,rgba(255,255,255,0.15),rgba(255,255,255,0)_60%)]">
                             <div class="globe-ring absolute inset-0 rounded-full border border-white/10"></div>
                             <div class="globe-ring absolute inset-[6%] rounded-full border border-white/10"></div>
@@ -287,7 +366,7 @@
                         <h3 class="title-sm">My AI Development Process</h3>
                         <p class="muted mt-1">From prompt engineering to deployment, I follow a systematic approach: research client needs, design custom prompts, integrate APIs, test thoroughly, and deploy scalable solutions.</p>
 
-                        <div class="mt-6">
+                        <div class="ai-tech-pipeline mt-6">
                             <div class="relative mx-auto max-w-xl">
                                 <!-- Pipeline Nodes -->
                                 <div class="flex items-center justify-between">
@@ -306,7 +385,7 @@
                                 </div>
                                 <!-- Pipeline Connectors -->
                                 <div class="pipeline-connector absolute left-0 right-0 top-1/2 -z-10 h-0.5 -translate-y-1/2 bg-gradient-to-r from-white/10 via-white/20 to-white/10"></div>
-                                <div class="absolute left-[16%] top-1/2 -translate-y-1/2 w-1/2 h-0.5 border-t border-dashed border-white/20"></div>
+                                <div class="pipeline-connector absolute left-[16%] top-1/2 -translate-y-1/2 w-1/2 h-0.5 border-t border-dashed border-white/20"></div>
                             </div>
                         </div>
                     </div>
@@ -357,32 +436,3 @@
     </div>
 </section>
 
-<script>
-    // AI Tech animations
-    function initAITechAnimations() {
-        const elements = document.querySelectorAll('.animate-slide-up');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        elements.forEach((element) => {
-            observer.observe(element);
-        });
-    }
-
-    // Initialize when DOM is loaded
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initAITechAnimations);
-    } else {
-        initAITechAnimations();
-    }
-</script>

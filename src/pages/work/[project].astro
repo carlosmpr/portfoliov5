@@ -18,6 +18,101 @@ if (!currentProject) {
 }
 ---
 
+<style>
+    /* GSAP Animation Initial States - Hidden by default */
+    .work-header,
+    .work-media-showcase,
+    .work-content-section,
+    .work-feature-card,
+    .work-metric,
+    .work-challenge,
+    .work-actions,
+    .work-next-project {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Fallback CSS animations if GSAP fails */
+    .css-animations .work-header {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .work-header.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .work-media-showcase {
+        opacity: 0;
+        transform: translateX(-60px) scale(0.95);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .work-media-showcase.is-visible {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .work-content-section {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+        transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .work-content-section.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .work-feature-card,
+    .css-animations .work-metric,
+    .css-animations .work-challenge,
+    .css-animations .work-actions,
+    .css-animations .work-next-project {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        transition: opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .work-feature-card.is-visible,
+    .css-animations .work-metric.is-visible,
+    .css-animations .work-challenge.is-visible,
+    .css-animations .work-actions.is-visible,
+    .css-animations .work-next-project.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    /* Staggered delays for CSS fallback */
+    .css-animations .delay-100 { transition-delay: 100ms; }
+    .css-animations .delay-200 { transition-delay: 200ms; }
+    .css-animations .delay-300 { transition-delay: 300ms; }
+    .css-animations .delay-400 { transition-delay: 400ms; }
+    .css-animations .delay-500 { transition-delay: 500ms; }
+    .css-animations .delay-600 { transition-delay: 600ms; }
+    .css-animations .delay-700 { transition-delay: 700ms; }
+    .css-animations .delay-800 { transition-delay: 800ms; }
+
+    /* Enhanced hover effects */
+    .media-gallery button:hover {
+        transform: translateY(-2px) scale(1.05);
+    }
+
+    .media-gallery button {
+        transition: all 0.2s ease;
+    }
+</style>
+
 <Layout 
     title={`${currentProject.title} - Carlos Polanco`}
     description={`${currentProject.title} - ${currentProject.description}`}
@@ -30,7 +125,7 @@ if (!currentProject) {
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 
                 <!-- Left Side - Sticky Media Showcase -->
-                <div class="lg:sticky lg:top-28 lg:h-fit order-2 lg:order-1">
+                <div class="work-media-showcase lg:sticky lg:top-28 lg:h-fit order-2 lg:order-1">
                     <div class="space-y-4 sm:space-y-6">
                         
                         <!-- Main Demo/Image -->
@@ -48,7 +143,7 @@ if (!currentProject) {
                         </div>
 
                         <!-- Media Gallery -->
-                        <div class="grid grid-cols-3 gap-3 sm:gap-4">
+                        <div class="media-gallery grid grid-cols-3 gap-3 sm:gap-4">
                             <button class="bg-white/5 border border-white/10 backdrop-filter backdrop-blur-md rounded-xl aspect-video flex items-center justify-center hover:bg-white/10 transition-all duration-300">
                                 <span class="text-white/70 text-xs text-center">Desktop<br/>View</span>
                             </button>
@@ -83,7 +178,7 @@ if (!currentProject) {
                         </div>
 
                         <!-- Quick Actions -->
-                        <div class="flex gap-3">
+                        <div class="work-actions flex gap-3">
                             <a href={currentProject.demoUrl} class="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 sm:px-6 py-3 rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 text-center font-medium text-sm sm:text-base border border-white/20" target="_blank" rel="noopener noreferrer">
                                 View Live Site
                             </a>
@@ -99,10 +194,10 @@ if (!currentProject) {
                 <div class="space-y-8 sm:space-y-12 order-1 lg:order-2">
                     
                     <!-- Project Header -->
-                    <header>
+                    <header class="work-header">
                         <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
                             {currentProject.status.map((status, index) => (
-                                <span class={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium border backdrop-filter backdrop-blur-md ${
+                                <span class={`status-badge px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium border backdrop-filter backdrop-blur-md ${
                                     index === 0 ? 'bg-green-500/20 text-green-400 border-green-500/30' : 'bg-blue-500/20 text-blue-400 border-blue-500/30'
                                 }`}>{status}</span>
                             ))}
@@ -117,18 +212,18 @@ if (!currentProject) {
                         <!-- Tech Stack -->
                         <div class="flex flex-wrap gap-2 sm:gap-3">
                             {currentProject.tags.map((tag) => (
-                                <span class="px-3 sm:px-4 py-1 sm:py-2 bg-white/10 border border-white/20 text-white/80 rounded-full text-xs sm:text-sm font-medium backdrop-filter backdrop-blur-md">{tag}</span>
+                                <span class="tech-tag px-3 sm:px-4 py-1 sm:py-2 bg-white/10 border border-white/20 text-white/80 rounded-full text-xs sm:text-sm font-medium backdrop-filter backdrop-blur-md">{tag}</span>
                             ))}
                         </div>
                     </header>
 
                     <!-- Key Features -->
-                    <section aria-labelledby="features-heading">
+                    <section class="work-content-section" aria-labelledby="features-heading">
                         <h2 id="features-heading" class="text-xl sm:text-2xl font-medium text-white mb-4 sm:mb-6">Key Features</h2>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                             {currentProject.features.map((feature) => (
-                                <div class="bg-neutral-900/60 border border-white/10 backdrop-filter backdrop-blur-md rounded-xl p-4 sm:p-6">
-                                    <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center mb-3 sm:mb-4">
+                                <div class="work-feature-card bg-neutral-900/60 border border-white/10 backdrop-filter backdrop-blur-md rounded-xl p-4 sm:p-6">
+                                    <div class="feature-icon w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 border border-blue-500/30 rounded-xl flex items-center justify-center mb-3 sm:mb-4">
                                         <svg class="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                                         </svg>
@@ -142,11 +237,11 @@ if (!currentProject) {
 
                     <!-- Challenges & Solutions -->
                     {currentProject.challenges && currentProject.challenges.length > 0 && (
-                        <section aria-labelledby="challenges-heading">
+                        <section class="work-content-section" aria-labelledby="challenges-heading">
                             <h2 id="challenges-heading" class="text-xl sm:text-2xl font-medium text-white mb-4 sm:mb-6">Challenges & Solutions</h2>
                             <div class="space-y-4 sm:space-y-6">
                                 {currentProject.challenges.map((challenge, index) => (
-                                    <div class={`border-l-4 pl-4 sm:pl-6 ${
+                                    <div class={`work-challenge border-l-4 pl-4 sm:pl-6 ${
                                         index % 3 === 0 ? 'border-blue-400/60' : 
                                         index % 3 === 1 ? 'border-green-400/60' : 'border-purple-400/60'
                                     }`}>
@@ -165,12 +260,12 @@ if (!currentProject) {
 
                     <!-- Results & Impact -->
                     {currentProject.results && (
-                        <section aria-labelledby="results-heading">
+                        <section class="work-content-section" aria-labelledby="results-heading">
                             <h2 id="results-heading" class="text-xl sm:text-2xl font-medium text-white mb-4 sm:mb-6">Results & Impact</h2>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-6">
                                 {currentProject.results.metrics.map((metric) => (
-                                    <div class="text-center p-4 sm:p-6 bg-neutral-900/60 border border-white/10 backdrop-filter backdrop-blur-md rounded-xl">
-                                        <div class="text-2xl sm:text-3xl font-light text-white mb-2">{metric.value}</div>
+                                    <div class="work-metric text-center p-4 sm:p-6 bg-neutral-900/60 border border-white/10 backdrop-filter backdrop-blur-md rounded-xl">
+                                        <div class="metric-value text-2xl sm:text-3xl font-light text-white mb-2">{metric.value}</div>
                                         <div class="text-white/70 text-sm sm:text-base">{metric.label}</div>
                                     </div>
                                 ))}
@@ -183,7 +278,7 @@ if (!currentProject) {
 
                     <!-- Next Project -->
                     {currentProject.nextProject && (
-                        <section class="border-t border-white/10 pt-8 sm:pt-12" aria-labelledby="next-project-heading">
+                        <section class="work-next-project border-t border-white/10 pt-8 sm:pt-12" aria-labelledby="next-project-heading">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                                 <div>
                                     <h3 id="next-project-heading" class="text-base sm:text-lg font-medium text-white mb-2">Next Project</h3>

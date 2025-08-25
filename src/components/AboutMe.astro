@@ -3,6 +3,74 @@
 ---
 
 <style>
+    /* GSAP Animation Initial States - Hidden by default */
+    .about-header,
+    .about-text-content,
+    .about-button,
+    #videoStack {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Fallback CSS animations if GSAP fails */
+    .css-animations .about-header {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .about-header.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .about-text-content {
+        opacity: 0;
+        transform: translateX(-40px) translateY(20px);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .about-text-content.is-visible {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+        visibility: visible;
+    }
+
+    .css-animations .about-button {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .about-button.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations #videoStack {
+        opacity: 0;
+        transform: translateX(50px) scale(0.8);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations #videoStack.is-visible {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        visibility: visible;
+    }
+
+    /* Fallback animation delays */
+    .css-animations .delay-100 { transition-delay: 100ms; }
+    .css-animations .delay-200 { transition-delay: 200ms; }
+    .css-animations .delay-300 { transition-delay: 300ms; }
+    .css-animations .delay-400 { transition-delay: 400ms; }
+
     .animate-slide-up {
         opacity: 0;
         transform: translateY(30px);
@@ -177,7 +245,7 @@
 <section class="pt-16 sm:pt-20  px-4 sm:px-6 bg-neutral-950 text-white" aria-labelledby="about-heading">
     <div class="max-w-7xl mx-auto">
 
-        <div class="sm:text-center mb-12">
+        <div class="about-header sm:text-center mb-12">
             <div class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 mb-4">
                 Personal story
             </div>
@@ -193,7 +261,7 @@
             <!-- Main Content Grid -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Text Content -->
-                <div class="space-y-6 text-white/70 leading-relaxed flex flex-col justify-center">
+                <div class="about-text-content space-y-6 text-white/70 leading-relaxed flex flex-col justify-center">
                     <p class="text-base sm:text-lg text-white/80 leading-relaxed">
                         I'm Carlos Polanco, a full-stack developer with 5+ years of experience specializing in React, Next.js, Python, Node.js, and AWS. From sleek UIs to backend automation and cloud deployments.
                     </p>
@@ -209,13 +277,13 @@
                     
                     <!-- Buttons with consistent styling -->
                     <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4">
-                        <a href="/about" class="project-tag text-white hover:text-blue-400 font-medium inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full">
+                        <a href="/about" class="about-button project-tag text-white hover:text-blue-400 font-medium inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full">
                             Learn More 
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                             </svg>
                         </a>
-                        <a href="/resume.pdf" class="project-tag text-white hover:text-emerald-400 font-medium inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full">
+                        <a href="/resume.pdf" class="about-button project-tag text-white hover:text-emerald-400 font-medium inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full">
                             Explore My Resume 
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>

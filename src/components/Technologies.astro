@@ -3,6 +3,62 @@
 ---
 
 <style>
+    /* GSAP Animation Initial States - Hidden by default */
+    .tech-icon,
+    .tech-header,
+    .tech-card {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    /* Fallback CSS animations if GSAP fails */
+    .css-animations .tech-icon {
+        opacity: 0;
+        transform: scale(0.3) translateY(-20px) rotate(-45deg);
+        transition: opacity 0.7s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .tech-icon.is-visible {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(0);
+        visibility: visible;
+    }
+
+    .css-animations .tech-header {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .tech-header.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    .css-animations .tech-card {
+        opacity: 0;
+        transform: translateY(60px) scale(0.8);
+        transition: opacity 0.8s cubic-bezier(0.19, 1, 0.22, 1),
+                    transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .css-animations .tech-card.is-visible {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        visibility: visible;
+    }
+
+    /* Staggered delays for CSS fallback */
+    .css-animations .delay-100 { transition-delay: 100ms; }
+    .css-animations .delay-200 { transition-delay: 200ms; }
+    .css-animations .delay-300 { transition-delay: 300ms; }
+    .css-animations .delay-400 { transition-delay: 400ms; }
+    .css-animations .delay-500 { transition-delay: 500ms; }
+    .css-animations .delay-600 { transition-delay: 600ms; }
+
     .animate-slide-up {
         opacity: 0;
         transform: translateY(30px);
@@ -34,7 +90,7 @@
         <!-- Single Glass Card with All Content -->
         <div class=" p-4 sm:p-12 animate-slide-up min-h-[600px] flex flex-col justify-center">
             <!-- Header Section -->
-            <div class="sm:text-center mb-12">
+            <div class="tech-header sm:text-center mb-12">
                 <div class="tech-icon flex items-center justify-center w-12 h-12 rounded-full mb-6 mx-auto">
                     <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
@@ -56,7 +112,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
                     
                     <!-- Frontend Development -->
-                    <div>
+                    <div class="tech-card">
                         <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Frontend Development</h3>
                         <p class="text-white/70 text-sm leading-relaxed">
                             React, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML5, CSS3, Responsive Design, SPA Development
@@ -64,7 +120,7 @@
                     </div>
 
                     <!-- Backend Development -->
-                    <div>
+                    <div class="tech-card">
                         <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Backend Development</h3>
                         <p class="text-white/70 text-sm leading-relaxed">
                             Python, Node.js, FastAPI, Express.js, REST APIs, GraphQL, Microservices Architecture, API Design
@@ -72,7 +128,7 @@
                     </div>
 
                     <!-- Database & Storage -->
-                    <div>
+                    <div class="tech-card">
                         <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Database & Storage</h3>
                         <p class="text-white/70 text-sm leading-relaxed">
                             PostgreSQL, MongoDB, Redis, MySQL, Database Design, Query Optimization, Data Modeling
@@ -80,7 +136,7 @@
                     </div>
 
                     <!-- Cloud & DevOps -->
-                    <div>
+                    <div class="tech-card">
                         <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Cloud & DevOps</h3>
                         <p class="text-white/70 text-sm leading-relaxed">
                             AWS, Docker, CI/CD Pipelines, GitHub Actions, Vercel, Serverless Functions, Infrastructure as Code
@@ -88,7 +144,7 @@
                     </div>
 
                     <!-- AI & Machine Learning -->
-                    <div>
+                    <div class="tech-card">
                         <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">AI & Machine Learning</h3>
                         <p class="text-white/70 text-sm leading-relaxed">
                             OpenAI API, ChatGPT Integration, Gemini API, Prompt Engineering, AI Workflow Automation, Vector Databases
@@ -96,7 +152,7 @@
                     </div>
 
                     <!-- Mobile & Tools -->
-                    <div>
+                    <div class="tech-card">
                         <h3 class="text-sm font-bold text-white uppercase tracking-wide mb-3">Mobile & Development Tools</h3>
                         <p class="text-white/70 text-sm leading-relaxed">
                             React Native, Flutter, Git, VS Code, Postman, Figma, Chrome DevTools, Testing Frameworks
