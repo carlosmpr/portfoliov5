@@ -70,50 +70,32 @@ const { title, description, currentPage } = Astro.props;
 <body class="bg-neutral-950 text-white font-sans antialiased overflow-x-hidden">
     <Navbar {currentPage} />
 
-    {/* The <slot /> will render the content of each individual page */}
     <slot />
 
     <Footer />
 
     <script>
-        // Centralized animation system
-        async function initializePageAnimations() {
-            // Initialize basic animations and utilities
-            if (typeof window.initBasicAnimations !== 'undefined') {
-                window.initBasicAnimations();
-            }
-            
-            if (typeof window.initVideoStack !== 'undefined') {
-                window.initVideoStack();
-            }
-            
-            // Initialize advanced GSAP animations
-            if (typeof window.initAllAnimations !== 'undefined') {
-                await window.initAllAnimations();
-            }
-        }
-
-        // Run animations on page load
-        document.addEventListener('DOMContentLoaded', initializePageAnimations);
-        
-        // Re-run animations after page transitions
-        document.addEventListener('astro:after-swap', initializePageAnimations);
-    </script>
-
-    <!-- Load animation system -->
-    <script type="module">
+        // Import your animation functions directly here.
+        // Astro will bundle this and create the correct production path.
         import { 
             initializeAllAnimations, 
             initBasicScrollAnimations, 
-            initVideoStack,
-            navigateToProject 
+            initVideoStack 
         } from '/src/animations/index.js';
+
+        // This function will run on initial page load and after every page transition.
+        function runAnimations() {
+            // Your existing logic
+            initBasicScrollAnimations();
+            initVideoStack();
+            initializeAllAnimations();
+        }
+
+        // Run animations on the first load
+        document.addEventListener('DOMContentLoaded', runAnimations);
         
-        // Expose functions to global scope
-        window.initAllAnimations = initializeAllAnimations;
-        window.initBasicAnimations = initBasicScrollAnimations;
-        window.initVideoStack = initVideoStack;
-        window.navigateToProject = navigateToProject;
+        // Re-run animations after a page transition
+        document.addEventListener('astro:after-swap', runAnimations);
     </script>
 </body>
 </html>
